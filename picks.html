@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Three Pointer League - Full Picks</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Keywords used in the website -->
+    <meta name="keywords" content="Three Pointer League Full Picks">
+    
+    <!-- Description for Website -->
+    <meta name="description" content="NAME for Three Pointer League">
+    
+    <!-- Bootstrap.css -->
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <!-- Custom styling -->
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+  </head>
+    
+  <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+  <body id="page-top" data-spy="scroll" data-target=".navbar fixed-top">
+    <nav class="navbar navbar-fixed-top" role="navigation">
+      <div class="header">
+        <div class="header-text">
+          <h1><strong>Three Pointer League</strong></h1>
+          <p id="user-note"></p>
+        </div>
+      </div>
+      <div class="mobile-nav-button">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <p><i>Menu</i></p>
+        </a>
+      </div>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul id="nav" class="nav navbar-nav">
+          <li><a href="home.html">Home</a>
+          <li><a><strong>Full Picks</strong></a></li>
+          <li><a href="stats.html">Statistics</a></li>
+          <li><a href="earnings.html">Earnings</a></li>
+          <li><a href="rules.html">Rules</a></li>
+          <li><a href="history.html">History</a></li>
+          <li><a href="javascript:void(0);" onclick="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <!-- Weeks Picks Section -->
+    <section id="weeks-picks" class="weeks-picks-section">
+      <h1>This Week's Picks</h1>
+      <div class="pick_table_div table_div_boarder">
+        <table id="this_week_table">
+          <thead>
+            <tr id="this_week_head_row">
+              <th scope="col" class="wide_col bottom_divider dark_background">Day of Week</th>
+              <th scope="col" class="wide_col bottom_divider dark_background">Lock Date + Time</th>
+              <th scope="col" class="extra_wide_col bottom_divider dark_background">Question</th>
+              <th scope="col" class="wide_col right_divider bottom_divider dark_background">Correct Answer</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+      
+    <section id="last-picks" class="last-picks-section">
+      <h1>Last Week's Picks</h1>
+      <div class="pick_table_div table_div_boarder">
+        <table id="last_week_table">
+          <thead>
+            <tr id="last_week_head_row">
+              <th scope="col" class="wide_col">Day of Week</th>
+              <th scope="col" class="wide_col">Lock Date + Time</th>
+              <th scope="col" class="extra_wide_col">Question</th>
+              <th scope="col" class="wide_col">Correct Answer</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </body>
+
+<script>
+    var is_logged_in = localStorage.getItem("logged-in");
+    var curr_user = localStorage.getItem("user");
+    document.getElementById("user-note").innerHTML = curr_user;
+    if(!is_logged_in){
+        window.location.replace("index.html");
+    }
+    function logout(){
+        localStorage.clear();
+        window.location.replace("index.html");
+    }
+</script>
+    
+<script>
+    const thisWeekSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1waMZl4-Am7Y07xgdGjVjIRcTFtPzXHg9AHipj3atKdE/values/This Week's Picks/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    this_week_data_fetch();
+    
+    async function this_week_data_fetch(){
+        let this_picks_data = await fetch(thisWeekSheetLink)    
+          .then((response) => response.json());
+        var num_players = 47;
+        var head_row = document.getElementById("this_week_head_row");
+        var table = document.getElementById("this_week_table");
+        for (let i = 0; i < num_players; i++) {
+            var cell = head_row.insertCell(4+i);
+            cell.innerHTML = this_picks_data.values[3][5+i*3];
+            cell.classList.add("std_col");
+            cell.classList.add("bottom_divider");
+            cell.classList.add("right_divider_soft");
+            cell.classList.add("dark_background");
+        }
+        for (let day = 0; day < 7; day++){
+            var row1 = table.insertRow(day*3+1); 
+            var row2 = table.insertRow(day*3+2); 
+            var row3 = table.insertRow(day*3+3); 
+            cell1 = row1.insertCell(0);
+            cell1.innerHTML = this_picks_data.values[5+day*3][1];
+            cell1.rowSpan = "3";
+            cell1.classList.add("bottom_divider");
+            cell2a = row1.insertCell(1);
+            cell2a.innerHTML = this_picks_data.values[5+day*3][2];
+            cell2b = row2.insertCell(0);
+            cell2b.innerHTML = this_picks_data.values[6+day*3][2];
+            cell2c = row3.insertCell(0);
+            cell2c.innerHTML = this_picks_data.values[7+day*3][2];
+            cell2c.classList.add("bottom_divider");
+            cell3a = row1.insertCell(2);
+            cell3a.innerHTML = this_picks_data.values[5+day*3][3];
+            cell3b = row2.insertCell(1);
+            cell3b.innerHTML = this_picks_data.values[6+day*3][3];
+            cell3c = row3.insertCell(1);
+            cell3c.innerHTML = this_picks_data.values[7+day*3][3];
+            cell3c.classList.add("bottom_divider");
+            cell4a = row1.insertCell(3);
+            cell4a.innerHTML = this_picks_data.values[5+day*3][4];
+            cell4a.classList.add("right_divider");
+            cell4b = row2.insertCell(2);
+            cell4b.innerHTML = this_picks_data.values[6+day*3][4];
+            cell4b.classList.add("right_divider");
+            cell4c = row3.insertCell(2);
+            cell4c.innerHTML = this_picks_data.values[7+day*3][4];
+            cell4c.classList.add("right_divider");
+            cell4c.classList.add("bottom_divider");
+            for (let j = 0; j < num_players; j++){
+                cell_p1a = row1.insertCell(4+j);
+                cell_p1a.innerHTML = this_picks_data.values[5+day*3][5+j*3];
+                cell_p1a.classList.add("right_divider_soft");
+                cell_p1b = row2.insertCell(3+j);
+                cell_p1b.innerHTML = this_picks_data.values[6+day*3][5+j*3];
+                cell_p1b.classList.add("right_divider_soft");
+                cell_p1c = row3.insertCell(3+j);
+                cell_p1c.innerHTML = this_picks_data.values[7+day*3][5+j*3];
+                cell_p1c.classList.add("bottom_divider");
+                cell_p1c.classList.add("right_divider_soft");
+                //cell_p2a = row1.insertCell(5+j*3);
+                cell_p2a_text = this_picks_data.values[5+day*3][6+j*3];
+                //cell_p2a.innerHTML = cell_p2a_text;
+                //cell_p2b = row2.insertCell(4+j*2);
+                cell_p2b_text = this_picks_data.values[6+day*3][6+j*3];
+                //cell_p2b.innerHTML = cell_p2b_text;
+                //cell_p2c = row3.insertCell(4+j*2);
+                cell_p2c_text = this_picks_data.values[7+day*3][6+j*3];
+                //cell_p2c.innerHTML = cell_p2c_text;
+                //cell_p3 = row1.insertCell(6+j*3);
+                cell_p3_text = this_picks_data.values[5+day*3][7+j*3];
+                //cell_p3.innerHTML = cell_p3_text;
+                //cell_p3.rowSpan = "3";
+                if (cell_p2a_text=="!"){
+                    cell_p1a.classList.add("green_cell");
+                }
+                else if (cell_p2a_text=="x"){
+                    cell_p1a.classList.add("red_cell");
+                }
+                if (cell_p2b_text=="!"){
+                    cell_p1b.classList.add("green_cell");
+                }
+                else if (cell_p2b_text=="x"){
+                    cell_p1b.classList.add("red_cell");
+                }
+                if (cell_p2c_text=="!"){
+                    cell_p1c.classList.add("green_cell");
+                }
+                else if (cell_p2c_text=="x"){
+                    cell_p1c.classList.add("red_cell");
+                }
+                if (cell_p3_text=="!"){
+                    cell_p1a.classList.add("bold_cell");
+                    cell_p1b.classList.add("bold_cell");
+                    cell_p1c.classList.add("bold_cell");
+                    cell_p1a.classList.add("three_top");
+                    cell_p1b.classList.add("three_middle");
+                    cell_p1c.classList.add("three_bottom");
+                }
+            }
+        }
+        var score_row = table.insertRow(22);
+        cell_s = score_row.insertCell(0);
+        cell_s.innerHTML = "Scores";
+        cell_s.classList.add("bottom_divider");
+        cell_s.classList.add("right_divider_soft");
+        cell_s.classList.add("dark_background");
+        cell_s.colSpan = "4";
+        for (let j = 0; j < num_players; j++){
+            cell_p = score_row.insertCell(1+j);
+            cell_p.innerHTML = this_picks_data.values[27][5+j*3];
+            cell_p_lead = this_picks_data.values[28][5+j*3];
+            cell_p.classList.add("right_divider");
+            if (cell_p_lead=="!"){
+                cell_p.classList.add("green_background");
+            }
+        }
+    }   
+    
+</script>
+    
+<script>
+    const lastWeekSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1waMZl4-Am7Y07xgdGjVjIRcTFtPzXHg9AHipj3atKdE/values/Last Week's Picks/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    last_week_data_fetch();
+    
+    async function last_week_data_fetch(){
+        let last_picks_data = await fetch(lastWeekSheetLink)    
+          .then((response) => response.json());
+        var num_players = 47;
+        var head_row = document.getElementById("last_week_head_row");
+        var table = document.getElementById("last_week_table");
+        for (let i = 0; i < num_players; i++) {
+            var cell = head_row.insertCell(4+i);
+            cell.innerHTML = last_picks_data.values[3][5+i*3];
+            cell.classList.add("std_col");
+            cell.classList.add("bottom_divider");
+            cell.classList.add("right_divider_soft");
+            cell.classList.add("dark_background");
+        }
+        for (let day = 0; day < 7; day++){
+            var row1 = table.insertRow(day*3+1); 
+            var row2 = table.insertRow(day*3+2); 
+            var row3 = table.insertRow(day*3+3); 
+            cell1 = row1.insertCell(0);
+            cell1.innerHTML = last_picks_data.values[5+day*3][1];
+            cell1.rowSpan = "3";
+            cell1.classList.add("bottom_divider");
+            cell2a = row1.insertCell(1);
+            cell2a.innerHTML = last_picks_data.values[5+day*3][2];
+            cell2b = row2.insertCell(0);
+            cell2b.innerHTML = last_picks_data.values[6+day*3][2];
+            cell2c = row3.insertCell(0);
+            cell2c.innerHTML = last_picks_data.values[7+day*3][2];
+            cell2c.classList.add("bottom_divider");
+            cell3a = row1.insertCell(2);
+            cell3a.innerHTML = last_picks_data.values[5+day*3][3];
+            cell3b = row2.insertCell(1);
+            cell3b.innerHTML = last_picks_data.values[6+day*3][3];
+            cell3c = row3.insertCell(1);
+            cell3c.innerHTML = last_picks_data.values[7+day*3][3];
+            cell3c.classList.add("bottom_divider");
+            cell4a = row1.insertCell(3);
+            cell4a.innerHTML = last_picks_data.values[5+day*3][4];
+            cell4a.classList.add("right_divider");
+            cell4b = row2.insertCell(2);
+            cell4b.innerHTML = last_picks_data.values[6+day*3][4];
+            cell4b.classList.add("right_divider");
+            cell4c = row3.insertCell(2);
+            cell4c.innerHTML = last_picks_data.values[7+day*3][4];
+            cell4c.classList.add("right_divider");
+            cell4c.classList.add("bottom_divider");
+            for (let j = 0; j < num_players; j++){
+                cell_p1a = row1.insertCell(4+j);
+                cell_p1a.innerHTML = last_picks_data.values[5+day*3][5+j*3];
+                cell_p1a.classList.add("right_divider_soft");
+                cell_p1b = row2.insertCell(3+j);
+                cell_p1b.innerHTML = last_picks_data.values[6+day*3][5+j*3];
+                cell_p1b.classList.add("right_divider_soft");
+                cell_p1c = row3.insertCell(3+j);
+                cell_p1c.innerHTML = last_picks_data.values[7+day*3][5+j*3];
+                cell_p1c.classList.add("bottom_divider");
+                cell_p1c.classList.add("right_divider_soft");
+                //cell_p2a = row1.insertCell(5+j*3);
+                cell_p2a_text = last_picks_data.values[5+day*3][6+j*3];
+                //cell_p2a.innerHTML = cell_p2a_text;
+                //cell_p2b = row2.insertCell(4+j*2);
+                cell_p2b_text = last_picks_data.values[6+day*3][6+j*3];
+                //cell_p2b.innerHTML = cell_p2b_text;
+                //cell_p2c = row3.insertCell(4+j*2);
+                cell_p2c_text = last_picks_data.values[7+day*3][6+j*3];
+                //cell_p2c.innerHTML = cell_p2c_text;
+                //cell_p3 = row1.insertCell(6+j*3);
+                cell_p3_text = last_picks_data.values[5+day*3][7+j*3];
+                //cell_p3.innerHTML = cell_p3_text;
+                //cell_p3.rowSpan = "3";
+                if (cell_p2a_text=="!"){
+                    cell_p1a.classList.add("green_cell");
+                }
+                else if (cell_p2a_text=="x"){
+                    cell_p1a.classList.add("red_cell");
+                }
+                if (cell_p2b_text=="!"){
+                    cell_p1b.classList.add("green_cell");
+                }
+                else if (cell_p2b_text=="x"){
+                    cell_p1b.classList.add("red_cell");
+                }
+                if (cell_p2c_text=="!"){
+                    cell_p1c.classList.add("green_cell");
+                }
+                else if (cell_p2c_text=="x"){
+                    cell_p1c.classList.add("red_cell");
+                }
+                if (cell_p3_text=="!"){
+                    cell_p1a.classList.add("bold_cell");
+                    cell_p1b.classList.add("bold_cell");
+                    cell_p1c.classList.add("bold_cell");
+                    cell_p1a.classList.add("three_top");
+                    cell_p1b.classList.add("three_middle");
+                    cell_p1c.classList.add("three_bottom");
+                }
+            }
+        }
+        var score_row = table.insertRow(22);
+        cell_s = score_row.insertCell(0);
+        cell_s.innerHTML = "Scores";
+        cell_s.classList.add("bottom_divider");
+        cell_s.classList.add("right_divider_soft");
+        cell_s.classList.add("dark_background");
+        cell_s.colSpan = "4";
+        for (let j = 0; j < num_players; j++){
+            cell_p = score_row.insertCell(1+j);
+            cell_p.innerHTML = last_picks_data.values[27][5+j*3];
+            cell_p_lead = last_picks_data.values[28][5+j*3];
+            cell_p.classList.add("right_divider");
+            if (cell_p_lead=="!"){
+                cell_p.classList.add("green_background");
+            }
+        }
+        
+    }   
+    
+</script>
+    
+<script>
+    if (window.innerWidth < 766) {
+        document.getElementById("nav").style.display = "none";
+    }
+    function myFunction() {
+        var x = document.getElementById("nav");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>

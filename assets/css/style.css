@@ -1,0 +1,578 @@
+/* COMMENT */ 
+
+html {
+    width: 100%;
+    height: 100%;
+    min-width: fit-content;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 1.8rem;
+  font-family: "Fira Sans", sans-serif;
+  color: #383838;
+  background-color: #FFF;
+}
+
+.navbar {
+    background-color: #D3D3D3;
+	color: #000;
+    padding: 25px 40px;
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.header {
+    height: 100px;
+    width: 100%;
+    text-align: center;
+}
+
+.navbar-collapse {
+    float: left;
+}
+
+.navbar-nav > li > a {
+  color: #000;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.mobile-nav-button {
+    color: #fff;
+    display: none;
+    height: 20px;
+}
+
+.icon {
+    padding: 20px;
+}
+
+@media (max-width: 766px) {
+    
+    .header {
+        height: 120px;
+    }
+    
+    .navbar {
+        background-color: #3b674b;
+	    color: #fff;
+        padding: 25px 40px 5px 40px;
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .navbar-collapse {
+        display: flex;
+        flex-direction: column;
+        float: none;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar-nav > li > a {
+        color: #000;
+        font-size: 18px;
+        font-weight: 400;
+        text-align: center;
+    }
+    
+    .mobile-nav-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+    }
+}
+
+/* LOGIN Specific */ 
+
+.login-section {
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 0 0;
+}
+
+.intro-text {
+    text-align: center;
+    display: inline-block;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    padding: 0 5% 0 5%;
+}
+
+.register-section {
+    text-align: center;
+    display: inline-flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 5% 50px 5%;
+}
+
+.register-section input {
+    text-align: center;
+}
+
+/* HOME Specific */ 
+
+.welcome-section {
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 0 0;
+}
+
+.todays-picks-section {
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 0 0;
+}
+
+.scores-section {
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 0 0;
+    height: 1230px;
+}
+
+.question-box {
+    height: 96px;
+    width: 200px;
+    overflow: hidden; /* Makes cutoff work */
+    border: 0px solid black; /* Just for aesthetics, can be removed */
+    display: inline-block; /* Fit div to contents */
+}
+
+.question-embedded {
+    height: 400px;
+    width: 200px;
+    margin-top: -48px; /* Cut off top bar */
+    margin-left: -4px; /* Cut off left bar */
+}
+
+.scores-section iframe{
+    width: 736px;
+    height: 100%;
+}
+
+.todays-picks-section > h1{
+    padding: 0 0 10px 0;
+    text-decoration: underline;
+}
+
+@media (max-width: 766px) {
+    .question-box {
+        height: 85px;
+        width: 100%;
+        overflow: hidden; /* Makes cutoff work */
+        border: 0px solid black; /* Just for aesthetics, can be removed */
+        display: inline-block; /* Fit div to contents */
+    }
+
+    .question-embedded {
+        height: 300px;
+        width: 68%;
+        margin-top: -60px;
+    }
+    
+    .scores-section iframe{
+        width: auto;
+        height: 830px;
+    }
+    
+    .scores-section {
+        text-align: center;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        height: 900px;
+    }
+
+    .scores-section iframe{
+        width: 150%;
+        height: 900px;
+        -moz-transform: scale(0.5, 0.5); 
+        -webkit-transform: scale(0.5, 0.5); 
+        -o-transform: scale(0.5, 0.5);
+        -ms-transform: scale(0.5, 0.5);
+        transform: scale(0.5, 0.5); 
+        margin-top: -50%;
+    }
+}
+
+/* FULL PICKS Specific */ 
+
+.weeks-picks-section {
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 0 0;
+    position: relative;
+}
+
+.last-picks-section {
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 50px 0;
+}
+
+.pick_table_div {
+    overflow-x: scroll;
+    width: 1600px;
+}
+
+.extra_wide_col {
+    min-width: 700px;
+    max-width: 700px;
+}
+
+.wide_col {
+    min-width: 200px;
+    max-width: 200px;
+}
+
+.std_col {
+    min-width: 100px;
+    max-width: 100px;
+}
+
+.green_cell {
+    color: LimeGreen;
+}
+
+.red_cell {
+    color: Red;
+}
+
+.bold_cell {
+    font-weight: bold;
+}
+
+.bottom_divider {
+    border-bottom: 2pt solid black;
+}
+
+.three_top {
+    box-shadow: 0 3px 0 LimeGreen inset,
+               -3px 0 0 LimeGreen inset,
+               3px 0 0 LimeGreen inset;
+    outline-offset: 10px;
+}
+
+.three_middle {
+    box-shadow: -3px 0 0 LimeGreen inset,
+               3px 0 0 LimeGreen inset;
+}
+
+.three_bottom {
+    box-shadow: 0 -3px 0 LimeGreen inset,
+               -3px 0 0 LimeGreen inset,
+               3px 0 0 LimeGreen inset;
+    outline-offset: -5px;
+}
+
+.right_divider {
+    border-right: 2pt solid black;
+}
+
+.right_divider_soft {
+    border-right: 1pt solid black;
+}
+
+.dark_background {
+    background-color: Gainsboro;
+}
+
+.green_background {
+    box-shadow: 0 -3px 0 LimeGreen inset,
+                0 3px 0 LimeGreen inset,
+               -3px 0 0 LimeGreen inset,
+               3px 0 0 LimeGreen inset;
+    background-color: LightGreen;
+}
+
+#this_week_table {
+    border: 2pt solid black;
+}
+
+#last_week_table {
+    border: 2pt solid black;
+}
+
+.table_div_boarder {
+    border: 4pt solid black;
+    padding: 15px 15px;
+}
+
+@media (max-width: 766px) {
+    .weeks-picks-section {
+        text-align: center;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0 0 0;
+        height: 750px;
+        margin-top: -20%;
+    }
+
+    .weeks-picks-section > iframe {
+        width: 200%;
+        height: 550px;
+        -moz-transform: scale(0.5, 0.5); 
+        -webkit-transform: scale(0.5, 0.5); 
+        -o-transform: scale(0.5, 0.5);
+        -ms-transform: scale(0.5, 0.5);
+        transform: scale(0.5, 0.5); 
+        margin-top: -20%;
+    }
+
+    .past-picks-section {
+        text-align: center;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0 50px 0;
+        height: 750px;
+        margin-top: -20%;
+    }
+
+    .past-picks-section iframe{
+        width: 200%;
+        height: 550px;
+        -moz-transform: scale(0.5, 0.5); 
+        -webkit-transform: scale(0.5, 0.5); 
+        -o-transform: scale(0.5, 0.5);
+        -ms-transform: scale(0.5, 0.5);
+        transform: scale(0.5, 0.5); 
+        margin-top: -20%;
+    }
+}
+
+/* STATISTICS Specific */ 
+
+.stats-section {
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 0 0;
+    height: 1480px;
+}
+
+.stats-section iframe{
+    width: 1280px;
+    height: 100%;
+}
+
+@media (max-width: 766px) {
+    .stats-section {
+        text-align: center;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0 0px 0;
+        height: 950px;
+        margin-top: -20%;
+    }
+
+    .stats-section > iframe {
+        width: 240%;
+        height: 950px;
+        -moz-transform: scale(0.4, 0.4); 
+        -webkit-transform: scale(0.4, 0.4); 
+        -o-transform: scale(0.4, 0.4);
+        -ms-transform: scale(0.4, 0.4);
+        transform: scale(0.4, 0.4); 
+        margin-top: -70%;
+    }
+}
+
+/* EARNINGS Specific */ 
+
+.earnings-section {
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 0 0;
+    height: 1450px;
+}
+
+.earnings-section iframe{
+    width: 970px;
+    height: 100%;
+}
+
+.payouts-section {
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 0 0;
+    height: 820px;
+}
+
+.payouts-section iframe{
+    width: 804px;
+    height: 100%;
+}
+
+@media (max-width: 766px) {
+    .earnings-section {
+        text-align: center;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0 0px 0;
+        height: 950px;
+        margin-top: 0%;
+    }
+
+    .earnings-section > iframe {
+        width: 180%;
+        height: 850px;
+        -moz-transform: scale(0.5, 0.5); 
+        -webkit-transform: scale(0.5, 0.5); 
+        -o-transform: scale(0.5, 0.5);
+        -ms-transform: scale(0.5, 0.5);
+        transform: scale(0.5, 0.5); 
+        margin-top: -40%;
+    }
+
+    .payouts-section {
+        text-align: center;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        height: 650px;
+        margin-top: -100%;
+    }
+
+    .payouts-section iframe{
+        width: 150%;
+        height: 550px;
+        -moz-transform: scale(0.5, 0.5); 
+        -webkit-transform: scale(0.5, 0.5); 
+        -o-transform: scale(0.5, 0.5);
+        -ms-transform: scale(0.5, 0.5);
+        transform: scale(0.5, 0.5); 
+        margin-top: -20%;
+    }
+}
+
+/* RULES Specific */ 
+
+.rules-section {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    padding: 50px 5% 0 5%;
+}
+
+.content-text{
+    max-width: 800px;
+}
+
+/* HISTORY Specific */ 
+
+.records-section {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    padding: 50px 5% 0 5%;
+}
+
+.week-winners-section {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    padding: 50px 5% 0 5%;
+}
+
+.losers-section {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    padding: 50px 5% 0 5%;
+}
+
+.season-prizes-section {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    padding: 50px 5% 0 5%;
+}
+
+/* Center tables for demo */
+
+table {
+  margin: 0 auto;
+}
+
+/* Default Table Style */
+
+table {
+  color: #333;
+  background: white;
+  border: 1px solid grey;
+  font-size: 12pt;
+  border-collapse: collapse;
+}
+
+table thead th,
+table tfoot th {
+  color: #777;
+  background: rgba(0,0,0,.1);
+}
+
+table caption {
+  padding:.5em;
+}
+
+table th, table td {
+  padding: .5em;
+  border: 1px solid lightgrey;
+}
+
+.losers-section{
+    padding-bottom: 50px;
+}
+
+/* TEMPLATES */

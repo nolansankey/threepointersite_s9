@@ -1,0 +1,471 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <title>Three Pointer League</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width", initial-scale="1">
+    
+    <!-- Keywords used in the website -->
+    <meta name="keywords" content="Three Pointer League, Three Pointer, Nolan Sankey">
+    
+    <!-- Description for Website -->
+    <meta name="description" content="The official website for Three Pointer League">
+    
+    <!-- Bootstrap.css -->
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <!-- Custom styling -->
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+  </head>
+    
+  <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+  <body id="page-top" data-spy="scroll" data-target=".navbar fixed-top">
+    <nav class="navbar navbar-fixed-top" role="navigation">
+      <div class="header">
+        <div class="header-text">
+          <h1><strong>Three Pointer League</strong></h1>
+          <p id="user-note"></p>
+        </div>
+      </div>
+      <div class="mobile-nav-button">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <p><i>Menu</i></p>
+        </a>
+      </div>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul id="nav" class="nav navbar-nav">
+          <li><a><strong>Home</strong></a></li>
+          <li><a href="picks.html">Full Picks</a></li>
+          <li><a href="stats.html">Statistics</a></li>
+          <li><a href="earnings.html">Earnings</a></li>
+          <li><a href="rules.html">Rules</a></li>
+          <li><a href="history.html">History</a></li>
+          <li><a href="javascript:void(0);" onclick="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section id="login" class="login-section">
+      <h1>Login:</h1>
+      <div>
+        <form id="login-form">
+          <div class="field name-entry">
+            <label for="login-name">Name: </label>
+            <select id="login-name-select" name="login-name-select" class="input-box">
+              <option value="Default">(name)</option>
+              <option value="Alejandro Martinez">Alejandro Martinez</option>
+              <option value="Alex Hazlett">Alex Hazlett</option>
+              <option value="Alexander Coffey">Alexander Coffey</option>
+              <option value="Andrew Hunt">Andrew Hunt</option>
+              <option value="Andrew Mitchell">Andrew Mitchell</option>    
+              <option value="Ben DiMaio">Ben DiMaio</option>
+              <option value="Brian Tomasco">Brian Tomasco</option>
+              <option value="Bryan Vieger">Bryan Vieger</option>
+              <option value="Chris Wilford">Chris Wilford</option>
+              <option value="Clay Han">Clay Han</option>
+              <option value="Coby Gibson">Coby Gibson</option>
+              <option value="Colton Sankey">Colton Sankey</option>
+              <option value="Eddie Yang">Eddie Yang</option>
+              <option value="Garth Verdeflor">Garth Verdeflor</option>
+              <option value="Gracie Briggs">Gracie Briggs</option>
+              <option value="Graham Hazlett">Graham Hazlett</option>
+              <option value="Jack Vasu">Jack Vasu</option>
+              <option value="Jacob Taulman">Jacob Taulman</option>
+              <option value="Jasper Meyer">Jasper Meyer</option>
+              <option value="John Arcona">John Arcona</option>
+              <option value="John Perrotti">John Perrotti</option>
+              <option value="Johnny Morgart">Johnny Morgart</option>  
+              <option value="Joseph Klein">Joseph Klein</option>
+              <option value="Justin Baker">Justin Baker</option>
+              <option value="Kennedy Higgs">Kennedy Higgs</option>
+              <option value="Kyle Bensink">Kyle Bensink</option>
+              <option value="Kyle Kagan">Kyle Kagan</option>
+              <option value="Liam Hahn">Liam Hahn</option>
+              <option value="Liam Woehrle">Liam Woehrle</option>
+              <option value="Logan Sankey">Logan Sankey</option>
+              <option value="Madigan Briggs">Madigan Briggs</option>
+              <option value="Magnus Bigelow">Magnus Bigelow</option>
+              <option value="Malachi Phillips">Malachi Phillips</option>
+              <option value="Mason Strazzella">Mason Strazzella</option>
+              <option value="Matthew Johnson">Matthew Johnson</option>
+              <option value="Max Brautigam">Max Brautigam</option>
+              <option value="Nolan Connell">Nolan Connell</option>
+              <option value="Nolan Sankey">Nolan Sankey</option>
+              <option value="Peter Wharton">Peter Wharton</option>
+              <option value="River Fox-Welch">River Fox-Welch</option>
+              <option value="Ryan Blankemeier">Ryan Blankemeier</option>
+              <option value="Tiger Bjornlund">Tiger Bjornlund</option>
+              <option value="Tomas Greenberg">Tomas Greenberg</option>
+              <option value="Tommy Henninger">Tommy Henninger</option>
+              <option value="Trey Coleman">Trey Coleman</option>
+              <option value="Will Forshner">Will Forshner</option>
+              <option value="Will Graber">Will Graber</option>
+              <option value="Test Person">Test Person</option>
+              <option value="Admin">Admin</option>
+            </select><br>
+          </div> 
+          <div class="field password-entry">
+            <label>Password: <input type="text" id="password-typed" name="password-typed" class="input-box" required /></label><br>
+            <input type="submit" id="login-submit" value="Submit"><br>
+          </div>
+        </form>
+      </div>
+      <br>
+      <p><a href="javascript:void(0);" onclick="forgotPW()"><i>Forgot Password</i></a></p>
+      <p id="forgot-pw-message">You Fool! Text Nolan and he can help you log in or reset your password.</p>
+      <br>
+    </section>
+      
+    <!-- Register Section -->
+    <section id="register" class="register-section">
+      <h1>OR</h1><br>
+      <h1>Register:</h1>
+        <div class="intro-text">
+          <br>
+          <h4><strong>Welcome to Three Pointer Season 9!</strong></h4>
+          <p>The website has gotten an upgrade, but it's the same game as always.</p>
+          <p><strong>How to play: </strong>Each day I will post 3 questions about that day's sporting events (ex. Will the Golden State Warriors score 112 or more points against the L.A. Lakers? Will the Colorado Avalanche and New York Rangers combine for 6 or more goals? Will the Green Bay Packers beat the Tampa Bay Buccaneers?). You earn one point for each question you get right and if you nail all three you make a <i>Three Pointer</i> and earn an extra three points for a total of six. The player(s) with the most points at the end of the week get paid out and there are also season long prizes.</p>  
+          <p><strong>This season: </strong></p>
+          <p><strong>The website is back and better:</strong> Making picks and viewing scores should be easier than ever. The site does require a personalized login, but if you keep your browser open on the page, you shouldn't have to log in again. Let me know if you find any bugs or have suggestions for improvements!</p>
+          <p><strong>Buy-in and payouts: </strong>$25 buy-in for the whole season (5 weeks). Payouts will go to the top 5 each week and there will be season-long prizes as always. Amounts will be decided prior to the start of play based on the total number of players.</p>
+          <p><strong>Invite Policy: </strong>For each (new) player you invite, you will both get $5 off your entry fee. No maximum number of invites.</p>
+          <p><strong>Registration Deadline: </strong>TBD</p>
+          <p><strong>Sign up here:</strong></p>
+          <br>
+        </div>
+      <div>
+        <form method="POST" action="https://script.google.com/macros/s/AKfycbwHG4PKI0Rb0pb5wZIWpS_GvA9bUB7LSei4UejKWHNOXnfUOiAO-D1rgV3ZlMtE7M11/exec" id="register-form" >
+          <label>Name: <br><input type="text" name="Name" required /></label><br>
+          <label>Google Drive Email Address: <br><input type="text" name="Email" required /></label><br>
+          <label>Venmo Username: <br><input type="text" name="Venmo" required /></label><br>
+          <label>If you are a new player and someone other than Nolan invited you, put their name here: <br><input type="text" name="Invite"></label><br>
+          <label>Password: <br><input type="text" name="Password" required /></label>
+          <p><i>(it can be literally anything. 1 or more letters.)</i></p>
+          <br>
+          <input type="submit" id="register-submit" value="Submit">
+          <p id="submit-confirm"></p>
+        </form>
+        <br>
+        <p><i>NOTE: you will NOT be able to log-in until I approve you and add you as a user.</i></p>
+      </div>
+    </section>
+      
+      <!-- Passwords Saved -->
+    <section id="password-table" class="password-table-section">
+      <h1>Password Table</h1>
+      <table id="passwords-logged">
+        <tr>
+          <th>Name</th>
+          <th>Password</th>
+        </tr>
+        <tr>
+          <td>Alejandro Martinez</td>
+          <td>Martino838</td>
+        </tr>
+        <tr>
+          <td>Alex Hazlett</td>
+          <td>bruh</td>
+        </tr>
+        <tr>
+          <td>Alexander Coffey</td>
+          <td>soccerski16</td>
+        </tr>
+        <tr>
+          <td>Andrew Hunt</td>
+          <td>scrabla</td>
+        </tr>
+        <tr>
+          <td>Andrew Mitchell</td>
+          <td>Tuukka17</td>
+        </tr>
+        <tr>
+          <td>Ben DiMaio</td>
+          <td>Password</td>
+        </tr>
+        <tr>
+          <td>Brian Tomasco</td>
+          <td>AimingForConsolationPrize</td>
+        </tr>
+        <tr>
+          <td>Bryan Vieger</td>
+          <td>DaddyBurrow</td>
+        </tr>
+        <tr>
+          <td>Chris Wilford</td>
+          <td>42069</td>
+        </tr>
+        <tr>
+          <td>Clay Han</td>
+          <td>Hockey23</td>
+        </tr>
+        <tr>
+          <td>Coby Gibson</td>
+          <td>cvg</td>
+        </tr>
+        <tr>
+          <td>Colton Sankey</td>
+          <td>Csank</td>
+        </tr>
+        <tr>
+          <td>Eddie Yang</td>
+          <td>Pieisgood1!</td>
+        </tr>
+        <tr>
+          <td>Garth Verdeflor</td>
+          <td>NolanSpankey69</td>
+        </tr>
+        <tr>
+          <td>Gracie Briggs</td>
+          <td>iloveriver</td>
+        </tr>
+        <tr>
+          <td>Graham Hazlett</td>
+          <td>ChungusChungus</td>
+        </tr>
+        <tr>
+          <td>Jack Vasu</td>
+          <td>jackvasu</td>
+        </tr>
+        <tr>
+          <td>Jacob Taulman</td>
+          <td>Javier2017</td>
+        </tr>
+        <tr>
+          <td>Jasper Meyer</td>
+          <td>tp</td>
+        </tr>
+        <tr>
+          <td>John Arcona</td>
+          <td>blar69</td>
+        </tr>
+        <tr>
+          <td>John Perrotti</td>
+          <td>Select * From Password</td>
+        </tr>
+        <tr>
+          <td>Johnny Morgart</td>
+          <td>JohnnyM265</td>
+        </tr>
+        <tr>
+          <td>Joseph Klein</td>
+          <td>Me8Pasta</td>
+        </tr>
+        <tr>
+          <td>Justin Baker</td>
+          <td>C@ptain17</td>
+        </tr>
+        <tr>
+          <td>Kennedy Higgs</td>
+          <td>ken</td>
+        </tr>
+        <tr>
+          <td>Kyle Bensink</td>
+          <td>a</td>
+        </tr>
+        <tr>
+          <td>Kyle Kagan</td>
+          <td>Goose0902</td>
+        </tr>
+        <tr>
+          <td>Liam Hahn</td>
+          <td>Picks</td>
+        </tr>
+        <tr>
+          <td>Liam Woehrle</td>
+          <td>Liam3PT</td>
+        </tr>
+        <tr>
+          <td>Logan Sankey</td>
+          <td>Ham</td>
+        </tr>
+        <tr>
+          <td>Madigan Briggs</td>
+          <td>lucky#7</td>
+        </tr>
+        <tr>
+          <td>Magnus Bigelow</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>Malachi Phillips</td>
+          <td>Malaxcash</td>
+        </tr>
+        <tr>
+          <td>Mason Strazzella</td>
+          <td>nolanspankme69</td>
+        </tr>
+        <tr>
+          <td>Matthew Johnson</td>
+          <td>Picks1</td>
+        </tr>
+        <tr>
+          <td>Max Brautigam</td>
+          <td>pickme</td>
+        </tr>
+        <tr>
+          <td>Nolan Connell</td>
+          <td>Picks</td>
+        </tr>
+        <tr>
+          <td>Nolan Sankey</td>
+          <td>Commish</td>
+        </tr>
+        <tr>
+          <td>Peter Wharton</td>
+          <td>Ellieisagooddog</td>
+        </tr>
+        <tr>
+          <td>River Fox-Welch</td>
+          <td>NolanLovesDeezNuts</td>
+        </tr>
+        <tr>
+          <td>Ryan Blankemeier</td>
+          <td>Grabers6thtoe</td>
+        </tr>
+        <tr>
+          <td>Tiger Bjornlund</td>
+          <td>tr!ple3</td>
+        </tr>
+        <tr>
+          <td>Tomas Greenberg</td>
+          <td>Tomobro1</td>
+        </tr>
+        <tr>
+          <td>Tommy Henninger</td>
+          <td>Looper19</td>
+        </tr>
+        <tr>
+          <td>Trey Coleman</td>
+          <td>Trey1108</td>
+        </tr>
+        <tr>
+          <td>Will Forshner</td>
+          <td>bruh</td>
+        </tr>
+        <tr>
+          <td>Will Graber</td>
+          <td>W1llG@mbles</td>
+        </tr>
+        <tr>
+          <td>Test Person</td>
+          <td>Test</td>
+        </tr>
+        <tr>
+          <td>Admin</td>
+          <td>GiveMeTheAdminPower</td>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
+
+
+<script>
+    const sheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1UcaxACgomNwdjUcvEda46_KHpKLAt62wAuMKT9LPxIE/values/Sheet1/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    // const sheetLink = "https://script.google.com/macros/s/AKfycbyWrmh50hoo1ka-x45GSiv7RM5-pJDeyB6Scfkxo2WH92KH05TIyF9-KUFK3F5VdCKE/exec";
+    let a = "text";
+    var data_set = ["a", "b"];
+    var i = 0;
+    data_fetch();
+    
+    async function data_fetch(){
+        let sheet_data = await fetch(sheetLink)    
+          .then((response) => response.json());
+        a = sheet_data.values
+        console.log(a);
+        set_vals();
+        //console.log(sheet_data.values[0][0]);
+        //a = sheet_data.values[0][0];
+        //var myJSON = JSON.stringify(sheet_data);
+        //data_set.push(sheet_data);
+        //i = i + 1;
+        //data_set.push("c")
+        //a = "b";   
+    }
+    async function set_vals(){
+        document.getElementById("words").innerHTML = a;
+        document.getElementById("words2").innerHTML = data_set;
+    }
+</script>
+
+<script>
+    var registration_window = true;
+    if(registration_window) {
+        document.getElementById('login').style.display = 'block';
+        document.getElementById('register').style.display = 'block';
+    }
+    else {
+        document.getElementById('login').style.display = 'block';
+        document.getElementById('register').style.display = 'none';
+    }
+</script>
+
+<script>
+    document.getElementById("forgot-pw-message").style.display = "none";
+    function forgotPW() {
+        var x = document.getElementById("forgot-pw-message");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>
+
+<script>
+    window.addEventListener("load", function() {
+        var login_form = document.getElementById('login-form');
+        login_form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const data = new FormData(login_form);
+            entered_un = data.get("login-name-select");
+            entered_pw = data.get("password-typed");
+            searchPwTable(entered_un, entered_pw);
+        });
+    });
+</script>
+
+<script>
+    function searchPwTable(un, pw) {
+        var table = document.getElementById("passwords-logged");
+        
+        // Loop through all table rows
+        for (i = 1; i < table.rows.length; i++) {
+            var idx_name = table.rows[i].cells[0].innerText;
+            if (idx_name==un){
+                var idx_pw = table.rows[i].cells[1].innerText;
+                if (idx_pw==pw){
+                    localStorage.setItem("logged-in", true);
+                    localStorage.setItem("user", entered_un);
+                    window.location.href = "home.html";
+                }
+            }          
+        }
+    }
+</script>
+
+<script>
+    window.addEventListener("load", function() {
+        var reg_form = document.getElementById('register-form');
+        reg_form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            document.getElementById("register-submit").disabled=true;
+            const data = new FormData(reg_form);
+            const action = e.target.action;
+            fetch(action, {
+                method: 'POST',
+                body: data,
+            })
+            .then(() => {
+                var r = confirm("Registration Successful. You will be granted the ability to log in soon. Time to get excited for the season!");
+                if (r == true){
+                    window.location.reload();
+                }
+            })
+        });
+    });
+</script>

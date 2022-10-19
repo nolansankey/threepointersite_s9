@@ -1,0 +1,308 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <title>Three Pointer League</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width", initial-scale="1">
+    
+    <!-- Keywords used in the website -->
+    <meta name="keywords" content="Three Pointer League, Three Pointer, Nolan Sankey">
+    
+    <!-- Description for Website -->
+    <meta name="description" content="The official website for Three Pointer League">
+    
+    <!-- Bootstrap.css -->
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <!-- Custom styling -->
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+  </head>
+    
+  <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+  <body id="page-top" data-spy="scroll" data-target=".navbar fixed-top">
+    <nav class="navbar navbar-fixed-top" role="navigation">
+      <div class="header">
+        <div class="header-text">
+          <h1><strong>Three Pointer League</strong></h1>
+          <p id="user-note"></p>
+        </div>
+      </div>
+      <div class="mobile-nav-button">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <p><i>Menu</i></p>
+        </a>
+      </div>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul id="nav" class="nav navbar-nav">
+          <li><a><strong>Home</strong></a></li>
+          <li><a href="picks.html">Full Picks</a></li>
+          <li><a href="stats.html">Statistics</a></li>
+          <li><a href="earnings.html">Earnings</a></li>
+          <li><a href="rules.html">Rules</a></li>
+          <li><a href="history.html">History</a></li>
+          <li><a href="javascript:void(0);" onclick="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Welcome Section -->
+    <section id="welcome" class="welcome-section">
+        <h1 id="user-intro"></h1>
+        <br>
+        <h3 id="pick-status"></h3>
+    </section>
+        
+    <!-- Todays Picks Section -->
+    <section id="todays-picks" class="todays-picks-section">
+      <h1>Today's Questions</h1>
+      <div id="yet-to-pick">
+        <form method="POST" action="https://script.google.com/macros/s/AKfycbx4YIm0zcw7hXk5viFjfiqcTYAe6ksKSv4VfTRMqyliIlkaCjUwltXJdgMS4hLwUCjwFQ/exec" id="picks-form">
+          
+          <h3>QUESTION 1:</h3>
+          <h3 id="q1_text">Question Error</h3>
+          <br>
+          <input type="radio" id="q1_yes" name="Q1" value="yes">
+          <label for="q1_yes">YES</label><br>
+          <input type="radio" id="q1_no" name="Q1" value="no">
+          <label for="q1_no">NO</label><br>
+          <input type="radio" id="q1_opt-out" name="Q1" value="opt out">
+          <label for="q1_opt-out">OPT OUT</label><br><br>
+              
+          <h3>QUESTION 2:</h3>
+          <h3 id="q2_text">Question Error</h3>
+          <input type="radio" id="q2_yes" name="Q2" value="yes">
+          <label for="q2_yes">YES</label><br>
+          <input type="radio" id="q2_no" name="Q2" value="no">
+          <label for="q2_no">NO</label><br>
+          <input type="radio" id="q2_opt-out" name="Q2" value="opt out">
+          <label for="q2_opt-out">OPT OUT</label><br><br>
+          
+          <h3>QUESTION 3:</h3>
+          <h3 id="q3_text">Question Error</h3>
+          <br>
+          <input type="radio" id="q3_yes" name="Q3" value="yes">
+          <label for="q3_yes">YES</label><br>
+          <input type="radio" id="q3_no" name="Q3" value="no">
+          <label for="q3_no">NO</label><br>
+          <input type="radio" id="q3_opt-out" name="Q3" value="opt out">
+          <label for="q3_opt-out">OPT OUT</label><br><br>
+          
+          <input type="submit" id="pick-submit" value="Submit">
+        </form>
+      </div>
+      <div id="already-picked">
+        <h3>QUESTION 1:</h3>
+        <div class="question-box">
+          <iframe class="question-embedded" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS_DqFFFE92WV--_W5u9igPEF7tndsOfDfC5N2dZrrKFTjiqLk0mnkDasC4Uh7edYfo4yp99S_3HfUA/pubhtml?gid=1851289190&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+        </div>
+        <br>
+        <p id="completed_q1_pick"></p>
+        <br>
+        <br>
+              
+        <h3>QUESTION 2:</h3>
+        <div class="question-box">
+          <iframe class="question-embedded" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS_DqFFFE92WV--_W5u9igPEF7tndsOfDfC5N2dZrrKFTjiqLk0mnkDasC4Uh7edYfo4yp99S_3HfUA/pubhtml?gid=1940429751&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+        </div>
+        <br>
+        <p id="completed_q2_pick"></p>
+        <br>
+        <br>
+         
+        <h3>QUESTION 3:</h3>
+        <div class="question-box">
+          <iframe class="question-embedded" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS_DqFFFE92WV--_W5u9igPEF7tndsOfDfC5N2dZrrKFTjiqLk0mnkDasC4Uh7edYfo4yp99S_3HfUA/pubhtml?gid=1168976608&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+        </div>
+        <br>
+        <p id="completed_q3_pick"></p>
+        <br>
+        <br>
+        <form method="POST" action="https://script.google.com/macros/s/AKfycbx4YIm0zcw7hXk5viFjfiqcTYAe6ksKSv4VfTRMqyliIlkaCjUwltXJdgMS4hLwUCjwFQ/exec" id="clear-form">
+          <input type="submit" id="clear-pick-submit" name="clear" value="Clear My Picks and Resubmit">
+        </form>
+      </div>
+    </section>
+      
+
+    <!-- Scoreboard Section -->
+    <section id="scores-section" class="scores-section">
+      <h1>This Week's Scores</h1>
+      <p id="scores_text"></p>
+      <table id="scores_table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Score</th>
+            <th scope="col">Change</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+         
+  </body>
+</html>
+
+<script>
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today = mm + '/' + dd + '/' + yyyy;         
+</script>
+
+<script>
+    var is_logged_in = localStorage.getItem("logged-in");
+    var curr_user = localStorage.getItem("user");
+    document.getElementById("user-note").innerHTML = curr_user;
+    document.getElementById("user-intro").innerHTML = "Hi "+curr_user+"!";
+    var q1_pick = localStorage.getItem("Q1 "+today);
+    var q2_pick = localStorage.getItem("Q2 "+today);
+    var q3_pick = localStorage.getItem("Q3 "+today);
+    document.getElementById("completed_q1_pick").innerHTML = "Your Pick: "+q1_pick;
+    document.getElementById("completed_q2_pick").innerHTML = "Your Pick: "+q2_pick;
+    document.getElementById("completed_q3_pick").innerHTML = "Your Pick: "+q3_pick;
+    if(!is_logged_in){
+        window.location.replace("index.html");
+    }
+    function logout(){
+        localStorage.clear();
+        window.location.replace("index.html");
+    }
+</script>
+
+<script>
+    has_picked = localStorage.getItem("picked "+today);
+    if(has_picked=="true") {
+        document.getElementById("pick-status").innerHTML = "Your picks today are submitted";
+        document.getElementById('yet-to-pick').style.display = 'none'; 
+        document.getElementById('already-picked').style.display = 'block'; 
+    }
+    else {
+        document.getElementById("pick-status").innerHTML = "You have yet to pick today";
+        document.getElementById('yet-to-pick').style.display = 'block'; 
+        document.getElementById('already-picked').style.display = 'none'; 
+    }
+</script>
+
+<script>
+    window.addEventListener("load", function() {
+        var p_form = document.getElementById('picks-form');
+        p_form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            document.getElementById("pick-submit").disabled=true;
+            const data = new FormData(p_form);
+            var currentdate = new Date(); 
+            var timestamp = Math.floor(new Date().getTime() / 1000);
+            data.append("Name", curr_user);
+            data.append("Timestamp", timestamp);
+            q1_input = data.get("Q1");
+            q2_input = data.get("Q2");
+            q3_input = data.get("Q3");
+            const action = e.target.action;
+            fetch(action, {
+                method: 'POST',
+                body: data,
+            })
+            .then(() => {
+                var r = confirm("Picks Submitted Successfully! Press OK to reload page");
+                if (r == true){
+                    localStorage.setItem("picked "+today, true);
+                    localStorage.setItem("Q1 "+today, q1_input);
+                    localStorage.setItem("Q2 "+today, q2_input);
+                    localStorage.setItem("Q3 "+today, q3_input);
+                    window.location.reload();
+                }
+            })
+        });
+    });
+</script>
+
+<script>
+    window.addEventListener("load", function() {
+        var clear_form = document.getElementById('clear-form');
+        clear_form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            document.getElementById("clear-pick-submit").disabled=true;
+            const data = new FormData(clear_form);
+            data.append("Name", curr_user);
+            data.append("Clear", true);
+            const action = e.target.action;
+            fetch(action, {
+                method: 'POST',
+                body: data,
+            })
+            .then(() => {
+                var r = confirm("Picks Cleared! Press OK to reload page and resubmit");
+                if (r == true){
+                    localStorage.setItem("picked "+today, false);
+                    localStorage.setItem("Q1 "+today, null);
+                    localStorage.setItem("Q2 "+today, null);
+                    localStorage.setItem("Q3 "+today, null);
+                    window.location.reload();
+                }
+            })
+        });
+    });
+</script>
+
+<script>
+    const questionsSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1waMZl4-Am7Y07xgdGjVjIRcTFtPzXHg9AHipj3atKdE/values/Upcoming Questions/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    let q1_fetch = "Question Error 2";
+    let q2_fetch = "Question Error 2";
+    let q3_fetch = "Question Error 2";
+    questions_data_fetch();
+    
+    async function questions_data_fetch(){
+        let sheet_data = await fetch(questionsSheetLink)    
+          .then((response) => response.json());
+        q1_fetch = sheet_data.values[29][3];
+        q2_fetch = sheet_data.values[30][3];
+        q3_fetch = sheet_data.values[31][3];
+        document.getElementById("q1_text").innerHTML = q1_fetch;
+        document.getElementById("q2_text").innerHTML = q2_fetch;
+        document.getElementById("q3_text").innerHTML = q3_fetch;
+    }
+
+</script>
+
+<script>
+    const scoresSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1waMZl4-Am7Y07xgdGjVjIRcTFtPzXHg9AHipj3atKdE/values/Scores/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    let score_item = "Scores Error 2";
+    scores_data_fetch();
+    
+    async function scores_data_fetch(){
+        let scores_data = await fetch(scoresSheetLink)    
+          .then((response) => response.json());
+        score_item = scores_data.values[4][5];
+        var num_payers = 10
+        for (let i = 0; i < num_payers; i++) {
+            var table = document.getElementById("scores_table");
+            var row = table.insertRow(i+1);
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = scores_data.values[4+i][5];
+            var cell2 = row.insertCell(1);
+            cell2.innerHTML = scores_data.values[4+i][6];
+            var cell3 = row.insertCell(2);
+            cell3.innerHTML = scores_data.values[4+i][12];
+        }
+    }   
+    
+</script>
+
+<script>
+    if (window.innerWidth < 766) {
+        document.getElementById("nav").style.display = "none";
+    }
+    function myFunction() {
+        var x = document.getElementById("nav");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>
