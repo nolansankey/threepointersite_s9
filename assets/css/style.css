@@ -147,7 +147,7 @@ body {
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    padding: 50px 0 0 0;
+    padding: 0 0 0 0;
 }
 
 .scores-section {
@@ -156,8 +156,7 @@ body {
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    padding: 50px 0 0 0;
-    height: 1230px;
+    padding: 150px 0 150px 0;
 }
 
 .question-box {

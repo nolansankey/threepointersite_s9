@@ -104,7 +104,7 @@
     async function this_week_data_fetch(){
         let this_picks_data = await fetch(thisWeekSheetLink)    
           .then((response) => response.json());
-        var num_players = 47;
+        var num_players = 9;
         var head_row = document.getElementById("this_week_head_row");
         var table = document.getElementById("this_week_table");
         for (let i = 0; i < num_players; i++) {
@@ -226,7 +226,7 @@
     async function last_week_data_fetch(){
         let last_picks_data = await fetch(lastWeekSheetLink)    
           .then((response) => response.json());
-        var num_players = 47;
+        var num_players = 9;
         var head_row = document.getElementById("last_week_head_row");
         var table = document.getElementById("last_week_table");
         for (let i = 0; i < num_players; i++) {
@@ -353,5 +353,12 @@
         } else {
             x.style.display = "block";
         }
+    }
+</script>
+    
+<script>
+    var past_week_1 = false;
+    if(!past_week_1) {
+        document.getElementById('last-picks').style.display = 'none';
     }
 </script>

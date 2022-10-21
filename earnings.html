@@ -37,10 +37,10 @@
       </div>
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul id="nav" class="nav navbar-nav">
-          <li><a><strong>Home</strong></a></li>
+          <li><a href="home.html">Home</a>
           <li><a href="picks.html">Full Picks</a></li>
           <li><a href="stats.html">Statistics</a></li>
-          <li><a href="earnings.html">Earnings</a></li>
+          <li><a><strong>Earnings</strong></a></li>
           <li><a href="rules.html">Rules</a></li>
           <li><a href="history.html">History</a></li>
           <li><a href="javascript:void(0);" onclick="logout()">Logout</a></li>
@@ -50,7 +50,34 @@
 
     <!-- Welcome Section -->
     <section id="test" class="test-section">
-        <h1 id="testext">earnings</h1>
+        <h1 id="testext">Earnings Coming Soon</h1>
     </section>
   </body>
 </html>
+
+<script>
+    var is_logged_in = localStorage.getItem("logged-in");
+    var curr_user = localStorage.getItem("user");
+    document.getElementById("user-note").innerHTML = curr_user;
+    if(!is_logged_in){
+        window.location.replace("index.html");
+    }
+    function logout(){
+        localStorage.clear();
+        window.location.replace("index.html");
+    }
+</script>
+
+<script>
+    if (window.innerWidth < 766) {
+        document.getElementById("nav").style.display = "none";
+    }
+    function myFunction() {
+        var x = document.getElementById("nav");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>

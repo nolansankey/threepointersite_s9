@@ -37,20 +37,55 @@
       </div>
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul id="nav" class="nav navbar-nav">
-          <li><a><strong>Home</strong></a></li>
+          <li><a href="home.html">Home</a>
           <li><a href="picks.html">Full Picks</a></li>
           <li><a href="stats.html">Statistics</a></li>
           <li><a href="earnings.html">Earnings</a></li>
-          <li><a href="rules.html">Rules</a></li>
+          <li><a><strong>Rules</strong></a></li>
           <li><a href="history.html">History</a></li>
           <li><a href="javascript:void(0);" onclick="logout()">Logout</a></li>
         </ul>
       </div>
     </nav>
 
-    <!-- Welcome Section -->
-    <section id="test" class="test-section">
-        <h1 id="testext">rules</h1>
+     <!-- Rules Section -->
+    <section id="rules" class="rules-section">
+      <div class="content-text">
+        <h1>Three Pointer Rules:</h1>
+        <br>
+        <p>There are 3 questions per day. Each question you get correct is worth 1 point, and if you get all 3 that is a 3 pointer and you get 3 extra points.</p>
+        <p>You must answer by game time, or else your pick will not be counted.</p>
+        <p><strong>Opt Out</strong> - <i>ONCE PER WEEK</i> you may opt out of a question and it will be counted as correct (not required to use)</p>
+        <p>***Questions are subject to change***</p>
+      </div>
     </section>
+      
   </body>
 </html>
+
+<script>
+    var is_logged_in = localStorage.getItem("logged-in");
+    var curr_user = localStorage.getItem("user");
+    document.getElementById("user-note").innerHTML = curr_user;
+    if(!is_logged_in){
+        window.location.replace("index.html");
+    }
+    function logout(){
+        localStorage.clear();
+        window.location.replace("index.html");
+    }
+</script>
+
+<script>
+    if (window.innerWidth < 766) {
+        document.getElementById("nav").style.display = "none";
+    }
+    function myFunction() {
+        var x = document.getElementById("nav");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>

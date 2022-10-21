@@ -59,9 +59,8 @@
     <section id="todays-picks" class="todays-picks-section">
       <h1>Today's Questions</h1>
       <div id="yet-to-pick">
-        <form method="POST" action="https://script.google.com/macros/s/AKfycbx4YIm0zcw7hXk5viFjfiqcTYAe6ksKSv4VfTRMqyliIlkaCjUwltXJdgMS4hLwUCjwFQ/exec" id="picks-form">
+        <form method="POST" action="https://script.google.com/macros/s/AKfycbzW48rMjihMF26QCeeOt6Qwrsd3CQvYa5HOCz7kKANT8-6a6_g0B9fo71haWg5Ekv1oIQ/exec" id="picks-form">
           
-          <h3>QUESTION 1:</h3>
           <h3 id="q1_text">Question Error</h3>
           <br>
           <input type="radio" id="q1_yes" name="Q1" value="yes">
@@ -71,7 +70,6 @@
           <input type="radio" id="q1_opt-out" name="Q1" value="opt out">
           <label for="q1_opt-out">OPT OUT</label><br><br>
               
-          <h3>QUESTION 2:</h3>
           <h3 id="q2_text">Question Error</h3>
           <input type="radio" id="q2_yes" name="Q2" value="yes">
           <label for="q2_yes">YES</label><br>
@@ -80,7 +78,6 @@
           <input type="radio" id="q2_opt-out" name="Q2" value="opt out">
           <label for="q2_opt-out">OPT OUT</label><br><br>
           
-          <h3>QUESTION 3:</h3>
           <h3 id="q3_text">Question Error</h3>
           <br>
           <input type="radio" id="q3_yes" name="Q3" value="yes">
@@ -94,33 +91,24 @@
         </form>
       </div>
       <div id="already-picked">
-        <h3>QUESTION 1:</h3>
-        <div class="question-box">
-          <iframe class="question-embedded" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS_DqFFFE92WV--_W5u9igPEF7tndsOfDfC5N2dZrrKFTjiqLk0mnkDasC4Uh7edYfo4yp99S_3HfUA/pubhtml?gid=1851289190&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-        </div>
+        <h3 id="q1_ap_text">Question Error</h3>
         <br>
         <p id="completed_q1_pick"></p>
         <br>
         <br>
               
-        <h3>QUESTION 2:</h3>
-        <div class="question-box">
-          <iframe class="question-embedded" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS_DqFFFE92WV--_W5u9igPEF7tndsOfDfC5N2dZrrKFTjiqLk0mnkDasC4Uh7edYfo4yp99S_3HfUA/pubhtml?gid=1940429751&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-        </div>
+        <h3 id="q2_ap_text">Question Error</h3>
         <br>
         <p id="completed_q2_pick"></p>
         <br>
         <br>
          
-        <h3>QUESTION 3:</h3>
-        <div class="question-box">
-          <iframe class="question-embedded" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS_DqFFFE92WV--_W5u9igPEF7tndsOfDfC5N2dZrrKFTjiqLk0mnkDasC4Uh7edYfo4yp99S_3HfUA/pubhtml?gid=1168976608&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-        </div>
+        <h3 id="q3_ap_text">Question Error</h3>
         <br>
         <p id="completed_q3_pick"></p>
         <br>
         <br>
-        <form method="POST" action="https://script.google.com/macros/s/AKfycbx4YIm0zcw7hXk5viFjfiqcTYAe6ksKSv4VfTRMqyliIlkaCjUwltXJdgMS4hLwUCjwFQ/exec" id="clear-form">
+        <form method="POST" action="https://script.google.com/macros/s/AKfycbzW48rMjihMF26QCeeOt6Qwrsd3CQvYa5HOCz7kKANT8-6a6_g0B9fo71haWg5Ekv1oIQ/exec" id="clear-form">
           <input type="submit" id="clear-pick-submit" name="clear" value="Clear My Picks and Resubmit">
         </form>
       </div>
@@ -134,9 +122,9 @@
       <table id="scores_table">
         <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Score</th>
-            <th scope="col">Change</th>
+            <th scope="col" class="wide_col">Name</th>
+            <th scope="col" class="wide_col">Score</th>
+            <th scope="col" class="wide_col">Change</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -262,9 +250,12 @@
         q1_fetch = sheet_data.values[29][3];
         q2_fetch = sheet_data.values[30][3];
         q3_fetch = sheet_data.values[31][3];
-        document.getElementById("q1_text").innerHTML = q1_fetch;
-        document.getElementById("q2_text").innerHTML = q2_fetch;
-        document.getElementById("q3_text").innerHTML = q3_fetch;
+        document.getElementById("q1_text").innerHTML = "Q1: "+q1_fetch;
+        document.getElementById("q2_text").innerHTML = "Q2: "+q2_fetch;
+        document.getElementById("q3_text").innerHTML = "Q3: "+q3_fetch;
+        document.getElementById("q1_ap_text").innerHTML = "Q1: "+q1_fetch;
+        document.getElementById("q2_ap_text").innerHTML = "Q2: "+q2_fetch;
+        document.getElementById("q3_ap_text").innerHTML = "Q3: "+q3_fetch;
     }
 
 </script>
@@ -278,7 +269,7 @@
         let scores_data = await fetch(scoresSheetLink)    
           .then((response) => response.json());
         score_item = scores_data.values[4][5];
-        var num_payers = 10
+        var num_payers = 9
         for (let i = 0; i < num_payers; i++) {
             var table = document.getElementById("scores_table");
             var row = table.insertRow(i+1);
