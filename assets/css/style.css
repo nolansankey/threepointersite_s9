@@ -13,6 +13,7 @@ body {
   font-family: "Fira Sans", sans-serif;
   color: #383838;
   background-color: #FFF;
+  position: relative;
 }
 
 .navbar {
@@ -159,50 +160,13 @@ body {
     padding: 150px 0 150px 0;
 }
 
-.question-box {
-    height: 96px;
-    width: 200px;
-    overflow: hidden; /* Makes cutoff work */
-    border: 0px solid black; /* Just for aesthetics, can be removed */
-    display: inline-block; /* Fit div to contents */
-}
-
-.question-embedded {
-    height: 400px;
-    width: 200px;
-    margin-top: -48px; /* Cut off top bar */
-    margin-left: -4px; /* Cut off left bar */
-}
-
-.scores-section iframe{
-    width: 736px;
-    height: 100%;
-}
-
 .todays-picks-section > h1{
     padding: 0 0 10px 0;
     text-decoration: underline;
 }
 
 @media (max-width: 766px) {
-    .question-box {
-        height: 85px;
-        width: 100%;
-        overflow: hidden; /* Makes cutoff work */
-        border: 0px solid black; /* Just for aesthetics, can be removed */
-        display: inline-block; /* Fit div to contents */
-    }
-
-    .question-embedded {
-        height: 300px;
-        width: 68%;
-        margin-top: -60px;
-    }
     
-    .scores-section iframe{
-        width: auto;
-        height: 830px;
-    }
     
     .scores-section {
         text-align: center;
@@ -210,18 +174,7 @@ body {
         flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
-        height: 900px;
-    }
-
-    .scores-section iframe{
-        width: 150%;
-        height: 900px;
-        -moz-transform: scale(0.5, 0.5); 
-        -webkit-transform: scale(0.5, 0.5); 
-        -o-transform: scale(0.5, 0.5);
-        -ms-transform: scale(0.5, 0.5);
-        transform: scale(0.5, 0.5); 
-        margin-top: -50%;
+        padding: 150px 0 150px 0;
     }
 }
 
@@ -235,6 +188,8 @@ body {
     align-items: center;
     padding: 50px 0 0 0;
     position: relative;
+    max-width: 80vw;
+    margin: auto;
 }
 
 .last-picks-section {
@@ -244,11 +199,15 @@ body {
     justify-content: center;
     align-items: center;
     padding: 50px 0 50px 0;
+    position: relative;
+    max-width: 80vw;
+    margin: auto;
 }
 
 .pick_table_div {
     overflow-x: scroll;
-    width: 1600px;
+    position: relative;
+    max-width: 100%;
 }
 
 .extra_wide_col {
@@ -323,10 +282,12 @@ body {
 
 #this_week_table {
     border: 2pt solid black;
+    width: 100%;
 }
 
 #last_week_table {
     border: 2pt solid black;
+    width: 100%;
 }
 
 .table_div_boarder {
@@ -341,42 +302,18 @@ body {
         flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
+        position: relative;
         padding: 50px 0 0 0;
-        height: 750px;
-        margin-top: -20%;
-    }
+    } 
 
-    .weeks-picks-section > iframe {
-        width: 200%;
-        height: 550px;
-        -moz-transform: scale(0.5, 0.5); 
-        -webkit-transform: scale(0.5, 0.5); 
-        -o-transform: scale(0.5, 0.5);
-        -ms-transform: scale(0.5, 0.5);
-        transform: scale(0.5, 0.5); 
-        margin-top: -20%;
-    }
-
-    .past-picks-section {
+    .last-picks-section {
         text-align: center;
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
+        position: relative;
         padding: 50px 0 50px 0;
-        height: 750px;
-        margin-top: -20%;
-    }
-
-    .past-picks-section iframe{
-        width: 200%;
-        height: 550px;
-        -moz-transform: scale(0.5, 0.5); 
-        -webkit-transform: scale(0.5, 0.5); 
-        -o-transform: scale(0.5, 0.5);
-        -ms-transform: scale(0.5, 0.5);
-        transform: scale(0.5, 0.5); 
-        margin-top: -20%;
     }
 }
 
