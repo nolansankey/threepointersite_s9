@@ -62,6 +62,7 @@
         <form method="POST" action="https://script.google.com/macros/s/AKfycbzW48rMjihMF26QCeeOt6Qwrsd3CQvYa5HOCz7kKANT8-6a6_g0B9fo71haWg5Ekv1oIQ/exec" id="picks-form">
           
           <h3 id="q1_text">Question Error</h3>
+          <h4><a id="q1_link_1" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(link)</a></h4>
           <br>
           <input type="radio" id="q1_yes" name="Q1" value="yes">
           <label for="q1_yes">YES</label><br>
@@ -71,6 +72,7 @@
           <label for="q1_opt-out">OPT OUT</label><br><br>
               
           <h3 id="q2_text">Question Error</h3>
+          <h4><a id="q2_link_1" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(link)</a></h4>
           <input type="radio" id="q2_yes" name="Q2" value="yes">
           <label for="q2_yes">YES</label><br>
           <input type="radio" id="q2_no" name="Q2" value="no">
@@ -79,6 +81,7 @@
           <label for="q2_opt-out">OPT OUT</label><br><br>
           
           <h3 id="q3_text">Question Error</h3>
+          <h4><a id="q3_link_1" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(link)</a></h4>
           <br>
           <input type="radio" id="q3_yes" name="Q3" value="yes">
           <label for="q3_yes">YES</label><br>
@@ -92,18 +95,21 @@
       </div>
       <div id="already-picked">
         <h3 id="q1_ap_text">Question Error</h3>
+        <h4><a id="q1_link_2" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(link)</a></h4>
         <br>
         <p id="completed_q1_pick"></p>
         <br>
         <br>
               
         <h3 id="q2_ap_text">Question Error</h3>
+        <h4><a id="q2_link_2" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(link)</a></h4>
         <br>
         <p id="completed_q2_pick"></p>
         <br>
         <br>
          
         <h3 id="q3_ap_text">Question Error</h3>
+        <h4><a id="q3_link_2" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(link)</a></h4>
         <br>
         <p id="completed_q3_pick"></p>
         <br>
@@ -159,6 +165,9 @@
     function logout(){
         localStorage.clear();
         window.location.replace("index.html");
+    }
+    function link_error(){
+        var error_msg = confirm("Link error. Sorry :(");
     }
 </script>
 
@@ -256,6 +265,28 @@
         document.getElementById("q1_ap_text").innerHTML = "Q1: "+q1_fetch;
         document.getElementById("q2_ap_text").innerHTML = "Q2: "+q2_fetch;
         document.getElementById("q3_ap_text").innerHTML = "Q3: "+q3_fetch;
+        
+        q1_link_fetch = sheet_data.values[29][4];
+        q2_link_fetch = sheet_data.values[30][4];
+        q3_link_fetch = sheet_data.values[31][4];
+        document.getElementById("q1_link_1").setAttribute("href",q1_link_fetch);
+        document.getElementById("q1_link_1").setAttribute("target","_blank");
+        document.getElementById("q1_link_1").removeAttribute("onclick");
+        document.getElementById("q2_link_1").setAttribute("href",q2_link_fetch);
+        document.getElementById("q2_link_1").setAttribute("target","_blank");
+        document.getElementById("q2_link_1").removeAttribute("onclick");
+        document.getElementById("q3_link_1").setAttribute("href",q3_link_fetch);
+        document.getElementById("q3_link_1").setAttribute("target","_blank");
+        document.getElementById("q3_link_1").removeAttribute("onclick");
+        document.getElementById("q1_link_2").setAttribute("href",q1_link_fetch);
+        document.getElementById("q1_link_2").setAttribute("target","_blank");
+        document.getElementById("q1_link_2").removeAttribute("onclick");
+        document.getElementById("q2_link_2").setAttribute("href",q2_link_fetch);
+        document.getElementById("q2_link_2").setAttribute("target","_blank");
+        document.getElementById("q2_link_2").removeAttribute("onclick");
+        document.getElementById("q3_link_2").setAttribute("href",q3_link_fetch);
+        document.getElementById("q3_link_2").setAttribute("target","_blank");
+        document.getElementById("q3_link_2").removeAttribute("onclick");
     }
 
 </script>
