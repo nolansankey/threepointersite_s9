@@ -157,12 +157,20 @@ body {
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    padding: 150px 0 150px 0;
+    padding: 150px 5% 150px 5%;
 }
 
 .todays-picks-section > h1{
     padding: 0 0 10px 0;
     text-decoration: underline;
+}
+
+.user-cell {
+    background-color: PapayaWhip;
+}
+
+.leader-cell {
+    background-color: LightGreen;
 }
 
 @media (max-width: 766px) {
@@ -315,6 +323,25 @@ body {
         position: relative;
         padding: 50px 0 50px 0;
     }
+    
+    .extra_wide_col {
+        min-width: 350px;
+        max-width: 350px;
+    }
+
+    .wide_col {
+        min-width: 100px;
+        max-width: 100px;
+    }
+
+    .std_col {
+        min-width: 50px;
+        max-width: 50px;
+    }
+    
+    tr {
+        font-size: 6pt;
+    }
 }
 
 /* STATISTICS Specific */ 
@@ -442,7 +469,7 @@ body {
     align-items: center;
     text-align: center;
     display: flex;
-    padding: 50px 5% 0 5%;
+    padding: 50px 5% 20px 5%;
 }
 
 .content-text{

@@ -301,15 +301,29 @@
           .then((response) => response.json());
         score_item = scores_data.values[4][5];
         var num_payers = 9
+        var table = document.getElementById("scores_table");
+        var curr_user = localStorage.getItem("user");
         for (let i = 0; i < num_payers; i++) {
-            var table = document.getElementById("scores_table");
-            var row = table.insertRow(i+1);
+            var player = scores_data.values[4+i][5];
+            var row_add = i+1
+            if (player==curr_user){
+                var row_add = 1
+            }
+            var row = table.insertRow(row_add);
             var cell1 = row.insertCell(0);
-            cell1.innerHTML = scores_data.values[4+i][5];
+            cell1.innerHTML = player;
             var cell2 = row.insertCell(1);
             cell2.innerHTML = scores_data.values[4+i][6];
             var cell3 = row.insertCell(2);
             cell3.innerHTML = scores_data.values[4+i][12];
+            if (player==curr_user){
+                cell1.classList.add("user-cell");
+                cell2.classList.add("user-cell");
+                cell3.classList.add("user-cell");
+            }
+            if (scores_data.values[4+i][10]==1){
+                cell2.classList.add("green_background");
+            }      
         }
     }   
     

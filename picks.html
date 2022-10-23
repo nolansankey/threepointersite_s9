@@ -107,9 +107,15 @@
         var num_players = 9;
         var head_row = document.getElementById("this_week_head_row");
         var table = document.getElementById("this_week_table");
+        var curr_user = localStorage.getItem("user");
         for (let i = 0; i < num_players; i++) {
-            var cell = head_row.insertCell(4+i);
-            cell.innerHTML = this_picks_data.values[3][5+i*3];
+            var player = this_picks_data.values[3][5+i*3];
+            var col_add = i+4;
+            if (player==curr_user){
+                var col_add = 4
+            }
+            var cell = head_row.insertCell(col_add);
+            cell.innerHTML = player;
             cell.classList.add("std_col");
             cell.classList.add("bottom_divider");
             cell.classList.add("right_divider_soft");
@@ -148,13 +154,18 @@
             cell4c.classList.add("right_divider");
             cell4c.classList.add("bottom_divider");
             for (let j = 0; j < num_players; j++){
-                cell_p1a = row1.insertCell(4+j);
+                var player = this_picks_data.values[3][5+j*3];
+                var col_add = j+4;
+                if (player==curr_user){
+                    var col_add = 4
+                }
+                cell_p1a = row1.insertCell(col_add);
                 cell_p1a.innerHTML = this_picks_data.values[5+day*3][5+j*3];
                 cell_p1a.classList.add("right_divider_soft");
-                cell_p1b = row2.insertCell(3+j);
+                cell_p1b = row2.insertCell(col_add-1);
                 cell_p1b.innerHTML = this_picks_data.values[6+day*3][5+j*3];
                 cell_p1b.classList.add("right_divider_soft");
-                cell_p1c = row3.insertCell(3+j);
+                cell_p1c = row3.insertCell(col_add-1);
                 cell_p1c.innerHTML = this_picks_data.values[7+day*3][5+j*3];
                 cell_p1c.classList.add("bottom_divider");
                 cell_p1c.classList.add("right_divider_soft");
@@ -197,6 +208,11 @@
                     cell_p1b.classList.add("three_middle");
                     cell_p1c.classList.add("three_bottom");
                 }
+                if (player==curr_user){
+                    cell_p1a.classList.add("user-cell");
+                    cell_p1b.classList.add("user-cell");
+                    cell_p1c.classList.add("user-cell");
+                }
             }
         }
         var score_row = table.insertRow(22);
@@ -207,12 +223,20 @@
         cell_s.classList.add("dark_background");
         cell_s.colSpan = "4";
         for (let j = 0; j < num_players; j++){
-            cell_p = score_row.insertCell(1+j);
+            var player = this_picks_data.values[3][5+j*3];
+            var col_add = j+1;
+            if (player==curr_user){
+                var col_add = 1
+            }
+            cell_p = score_row.insertCell(col_add);
             cell_p.innerHTML = this_picks_data.values[27][5+j*3];
             cell_p_lead = this_picks_data.values[28][5+j*3];
             cell_p.classList.add("right_divider");
             if (cell_p_lead=="!"){
                 cell_p.classList.add("green_background");
+            }
+            if (player==curr_user){
+                cell_p.classList.add("user-cell");
             }
         }
     }   
