@@ -81,6 +81,7 @@
         <tbody></tbody>
       </table>
       <br>
+      <p class="shrink-text">* not in the running for lucky loser if missed >4 days</p>
     </section>
   </body>
 </html>
@@ -173,6 +174,9 @@
             }
             if (stats_data.values[i+3][20]=="!"){
                 cell5.classList.add("green_border");
+            }
+            if (stats_data.values[i+3][23]=="-"){
+                cell5.classList.add("red_border");
             }
         }
     }   

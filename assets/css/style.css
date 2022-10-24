@@ -280,6 +280,13 @@ body {
     background-color: Gainsboro;
 }
 
+.red_border {
+    box-shadow: 0 -3px 0 LightCoral inset,
+                0 3px 0 LightCoral inset,
+               -3px 0 0 LightCoral inset,
+               3px 0 0 LightCoral inset;
+}
+
 .green_border {
     box-shadow: 0 -3px 0 #90EE90 inset,
                 0 3px 0 #90EE90 inset,
