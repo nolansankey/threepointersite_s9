@@ -48,9 +48,39 @@
       </div>
     </nav>
 
-    <!-- Welcome Section -->
-    <section id="test" class="test-section">
-        <h1 id="testext">Stats coming soon</h1>
+    <!-- Week Stats Section -->
+    <section id="weeks-stats-section" class="weeks-stats-section">
+      <h1 class="shrink-text-lg">This Week's Stats:</h1>
+      <table id="weeks-stats-table">
+        <thead>
+          <tr>
+            <th scope="col" class="std_col">Player</th>
+            <th scope="col" class="std_col">Days Played</th>
+            <th scope="col" class="std_col">Three Pointers</th>
+            <th scope="col" class="std_col">Correct Picks</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <br>
+    </section>
+      
+    <!-- Season Stats Section -->
+    <section id="season-stats-section" class="season-stats-section">
+      <h1 class="shrink-text-lg">Season Stats:</h1>
+      <table id="season-stats-table">
+        <thead>
+          <tr>
+            <th scope="col" class="std_col">Player</th>
+            <th scope="col" class="std_col">Days Played</th>
+            <th scope="col" class="std_col">Three Pointers</th>
+            <th scope="col" class="std_col">Correct Picks</th>
+            <th scope="col" class="std_col">Pick Accuracy</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <br>
     </section>
   </body>
 </html>
@@ -66,6 +96,87 @@
         localStorage.clear();
         window.location.replace("index.html");
     }
+</script>
+
+<script>
+    const statsSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1waMZl4-Am7Y07xgdGjVjIRcTFtPzXHg9AHipj3atKdE/values/Statistics/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    stats_data_fetch();
+    
+    async function stats_data_fetch(){
+        let stats_data = await fetch(statsSheetLink)    
+          .then((response) => response.json());
+        var table = document.getElementById("weeks-stats-table");
+        var curr_user = localStorage.getItem("user");
+        var num_players = 9;
+        for (let i = 0; i < num_players; i++) {
+            var player = stats_data.values[i+3][2];
+            var row_add = i+1
+            if (player==curr_user){
+                var row_add = 1
+            }
+            var row = table.insertRow(row_add);
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = stats_data.values[i+3][2];
+            var cell2 = row.insertCell(1);
+            cell2.innerHTML = stats_data.values[i+3][4];
+            var cell3 = row.insertCell(2);
+            cell3.innerHTML = stats_data.values[i+3][5];
+            var cell4 = row.insertCell(3);
+            cell4.innerHTML = stats_data.values[i+3][6];
+            //var cell5 = row.insertCell(4);
+            //cell5.innerHTML = stats_data.values[i+3][14];    
+            if (player==curr_user){
+                cell1.classList.add("user-cell");
+                cell2.classList.add("user-cell");
+                cell3.classList.add("user-cell");
+                cell4.classList.add("user-cell");
+                //cell5.classList.add("user-cell");
+            }
+            if (stats_data.values[i+3][16]=="!"){
+                cell3.classList.add("green_border");
+            }
+            if (stats_data.values[i+3][17]=="!"){
+                cell4.classList.add("green_border");
+            }
+        }
+        
+        var table = document.getElementById("season-stats-table");
+        for (let i = 0; i < num_players; i++) {
+            var player = stats_data.values[i+3][2];
+            var row_add = i+1
+            if (player==curr_user){
+                var row_add = 1
+            }
+            var row = table.insertRow(row_add);
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = stats_data.values[i+3][2];
+            var cell2 = row.insertCell(1);
+            cell2.innerHTML = stats_data.values[i+3][10];
+            var cell3 = row.insertCell(2);
+            cell3.innerHTML = stats_data.values[i+3][11];
+            var cell4 = row.insertCell(3);
+            cell4.innerHTML = stats_data.values[i+3][12];
+            var cell5 = row.insertCell(4);
+            cell5.innerHTML = stats_data.values[i+3][14]; 
+            if (player==curr_user){
+                cell1.classList.add("user-cell");
+                cell2.classList.add("user-cell");
+                cell3.classList.add("user-cell");
+                cell4.classList.add("user-cell");
+                cell5.classList.add("user-cell");
+            }
+            if (stats_data.values[i+3][18]=="!"){
+                cell3.classList.add("green_border");
+            }
+            if (stats_data.values[i+3][19]=="!"){
+                cell4.classList.add("green_border");
+            }
+            if (stats_data.values[i+3][20]=="!"){
+                cell5.classList.add("green_border");
+            }
+        }
+    }   
+    
 </script>
 
 <script>

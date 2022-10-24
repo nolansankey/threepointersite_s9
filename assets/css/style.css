@@ -250,21 +250,21 @@ body {
 }
 
 .three_top {
-    box-shadow: 0 3px 0 LimeGreen inset,
-               -3px 0 0 LimeGreen inset,
-               3px 0 0 LimeGreen inset;
+    box-shadow: 0 3px 0 #90EE90 inset,
+               -3px 0 0 #90EE90 inset,
+               3px 0 0 #90EE90 inset;
     outline-offset: 10px;
 }
 
 .three_middle {
-    box-shadow: -3px 0 0 LimeGreen inset,
-               3px 0 0 LimeGreen inset;
+    box-shadow: -3px 0 0 #90EE90 inset,
+               3px 0 0 #90EE90 inset;
 }
 
 .three_bottom {
-    box-shadow: 0 -3px 0 LimeGreen inset,
-               -3px 0 0 LimeGreen inset,
-               3px 0 0 LimeGreen inset;
+    box-shadow: 0 -3px 0 #90EE90 inset,
+               -3px 0 0 #90EE90 inset,
+               3px 0 0 #90EE90 inset;
     outline-offset: -5px;
 }
 
@@ -280,11 +280,14 @@ body {
     background-color: Gainsboro;
 }
 
+.green_border {
+    box-shadow: 0 -3px 0 #90EE90 inset,
+                0 3px 0 #90EE90 inset,
+               -3px 0 0 #90EE90 inset,
+               3px 0 0 #90EE90 inset;
+}
+
 .green_background {
-    box-shadow: 0 -3px 0 LimeGreen inset,
-                0 3px 0 LimeGreen inset,
-               -3px 0 0 LimeGreen inset,
-               3px 0 0 LimeGreen inset;
     background-color: LightGreen;
 }
 
@@ -354,43 +357,27 @@ body {
 
 /* STATISTICS Specific */ 
 
-.stats-section {
+.season-stats-section {
     text-align: center;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    padding: 50px 0 0 0;
-    height: 1480px;
+    padding: 25px 0;
 }
 
-.stats-section iframe{
-    width: 1280px;
-    height: 100%;
+.weeks-stats-section {
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
 }
+
 
 @media (max-width: 766px) {
-    .stats-section {
-        text-align: center;
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        align-items: center;
-        padding: 50px 0 0px 0;
-        height: 950px;
-        margin-top: -20%;
-    }
 
-    .stats-section > iframe {
-        width: 240%;
-        height: 950px;
-        -moz-transform: scale(0.4, 0.4); 
-        -webkit-transform: scale(0.4, 0.4); 
-        -o-transform: scale(0.4, 0.4);
-        -ms-transform: scale(0.4, 0.4);
-        transform: scale(0.4, 0.4); 
-        margin-top: -70%;
-    }
 }
 
 /* Payouts Specific */ 

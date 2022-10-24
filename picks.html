@@ -50,7 +50,7 @@
     
     <!-- Weeks Picks Section -->
     <section id="weeks-picks" class="weeks-picks-section">
-      <h1 class="shrink-text-lg">This Week's Picks</h1>
+      <h1 class="shrink-text-lg">This Week's Picks:</h1>
       <div class="pick_table_div table_div_boarder">
         <table id="this_week_table">
           <thead>
@@ -67,7 +67,7 @@
     </section>
       
     <section id="last-picks" class="last-picks-section">
-      <h1 class="shrink-text-lg">Last Week's Picks</h1>
+      <h1 class="shrink-text-lg">Last Week's Picks:</h1>
       <div class="pick_table_div table_div_boarder">
         <table id="last_week_table">
           <thead>
@@ -234,6 +234,7 @@
             cell_p.classList.add("right_divider");
             if (cell_p_lead=="!"){
                 cell_p.classList.add("green_background");
+                cell_p.classList.add("green_border");
             }
             if (player==curr_user){
                 cell_p.classList.add("user-cell");
@@ -244,7 +245,7 @@
 </script>
     
 <script>
-    const lastWeekSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1waMZl4-Am7Y07xgdGjVjIRcTFtPzXHg9AHipj3atKdE/values/Last Week's Picks/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    const lastWeekSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1waMZl4-Am7Y07xgdGjVjIRcTFtPzXHg9AHipj3atKdE/values/Past Week's Picks/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
     last_week_data_fetch();
     
     async function last_week_data_fetch(){
@@ -359,6 +360,8 @@
             cell_p.classList.add("right_divider");
             if (cell_p_lead=="!"){
                 cell_p.classList.add("green_background");
+                cell_p.classList.add("green_cell");
+                cell_p.classList.add("bold_cell");
             }
         }
         
