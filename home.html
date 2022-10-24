@@ -40,7 +40,7 @@
           <li><a><strong>Home</strong></a></li>
           <li><a href="picks.html">Full Picks</a></li>
           <li><a href="stats.html">Statistics</a></li>
-          <li><a href="earnings.html">Earnings</a></li>
+          <li><a href="payouts.html">Payouts</a></li>
           <li><a href="rules.html">Rules</a></li>
           <li><a href="history.html">History</a></li>
           <li><a href="javascript:void(0);" onclick="logout()">Logout</a></li>
@@ -123,7 +123,7 @@
 
     <!-- Scoreboard Section -->
     <section id="scores-section" class="scores-section">
-      <h1>This Week's Scores</h1>
+      <h1 class="shrink-text-lg">This Week's Scores</h1>
       <p id="scores_text"></p>
       <table id="scores_table">
         <thead>
@@ -153,6 +153,7 @@
     var curr_user = localStorage.getItem("user");
     document.getElementById("user-note").innerHTML = curr_user;
     document.getElementById("user-intro").innerHTML = "Hi "+curr_user+"!";
+    
     var q1_pick = localStorage.getItem("Q1 "+today);
     var q2_pick = localStorage.getItem("Q2 "+today);
     var q3_pick = localStorage.getItem("Q3 "+today);
@@ -172,16 +173,37 @@
 </script>
 
 <script>
-    has_picked = localStorage.getItem("picked "+today);
-    if(has_picked=="true") {
-        document.getElementById("pick-status").innerHTML = "Your picks today are submitted";
-        document.getElementById('yet-to-pick').style.display = 'none'; 
-        document.getElementById('already-picked').style.display = 'block'; 
-    }
-    else {
-        document.getElementById("pick-status").innerHTML = "You have yet to pick today";
-        document.getElementById('yet-to-pick').style.display = 'block'; 
-        document.getElementById('already-picked').style.display = 'none'; 
+    const responsesSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1waMZl4-Am7Y07xgdGjVjIRcTFtPzXHg9AHipj3atKdE/values/Responses/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    responses_data_fetch();
+    
+    async function responses_data_fetch(){
+        let responses_data = await fetch(responsesSheetLink)    
+          .then((response) => response.json());
+        var curr_user = localStorage.getItem("user");
+        var has_picked = false;
+        for (let i = 1; i < responses_data.values.length; i++) {
+            player = responses_data.values[i][1]
+            if (player==curr_user){
+                has_picked = true;
+                q1_pick = responses_data.values[i][2];
+                q2_pick = responses_data.values[i][3];
+                q3_pick = responses_data.values[i][4];
+            }
+        }
+        if (has_picked){
+            document.getElementById("completed_q1_pick").innerHTML = "Your Pick: "+q1_pick;
+            document.getElementById("completed_q2_pick").innerHTML = "Your Pick: "+q2_pick;
+            document.getElementById("completed_q3_pick").innerHTML = "Your Pick: "+q3_pick;
+        
+            document.getElementById("pick-status").innerHTML = "Your picks today are submitted";
+            document.getElementById('yet-to-pick').style.display = 'none'; 
+            document.getElementById('already-picked').style.display = 'block'; 
+        }
+        else {
+            document.getElementById("pick-status").innerHTML = "You have yet to pick today";
+            document.getElementById('yet-to-pick').style.display = 'block'; 
+            document.getElementById('already-picked').style.display = 'none'; 
+        }
     }
 </script>
 
@@ -299,7 +321,6 @@
     async function scores_data_fetch(){
         let scores_data = await fetch(scoresSheetLink)    
           .then((response) => response.json());
-        score_item = scores_data.values[4][5];
         var num_payers = 9
         var table = document.getElementById("scores_table");
         var curr_user = localStorage.getItem("user");

@@ -40,26 +40,32 @@
           <li><a href="home.html">Home</a>
           <li><a href="picks.html">Full Picks</a></li>
           <li><a href="stats.html">Statistics</a></li>
-          <li><a href="payouts.html">Payouts</a></li>
-          <li><a><strong>Rules</strong></a></li>
+          <li><a><strong>Payouts</strong></a></li>
+          <li><a href="rules.html">Rules</a></li>
           <li><a href="history.html">History</a></li>
           <li><a href="javascript:void(0);" onclick="logout()">Logout</a></li>
         </ul>
       </div>
     </nav>
 
-     <!-- Rules Section -->
-    <section id="rules" class="rules-section">
-      <div class="content-text">
-        <h1>Three Pointer Rules:</h1>
-        <br>
-        <p>There are 3 questions per day. Each question you get correct is worth 1 point, and if you get all 3 that is a 3 pointer and you get 3 extra points.</p>
-        <p>You must answer by game time, or else your pick will not be counted.</p>
-        <p><strong>Opt Out</strong> - <i>ONCE PER WEEK</i> you may opt out of a question and it will be counted as correct (not required to use)</p>
-        <p>***Questions are subject to change***</p>
-      </div>
+    <!-- Payouts Section -->
+    <section id="payouts-section" class="payouts-section">
+      <h1 class="shrink-text-lg">Payouts</h1>
+      <table id="payouts-table">
+        <thead>
+          <tr>
+            <th scope="col" class="std_col">Week</th>
+            <th scope="col" class="std_col">Prize</th>
+            <th scope="col" class="std_col">Amount</th>
+            <th scope="col" class="wide_col">Winner</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <br>
+      <p class="shrink-text">* Ties split prizes</p>
+      <p class="shrink-text">** Lucky Loser = lowest pick percentage with min 31 days played</p>
     </section>
-      
   </body>
 </html>
 
@@ -74,6 +80,46 @@
         localStorage.clear();
         window.location.replace("index.html");
     }
+</script>
+
+<script>
+    const payoutsSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1waMZl4-Am7Y07xgdGjVjIRcTFtPzXHg9AHipj3atKdE/values/Payouts/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    payouts_data_fetch();
+    
+    async function payouts_data_fetch(){
+        let payouts_data = await fetch(payoutsSheetLink)    
+          .then((response) => response.json());
+        var table = document.getElementById("payouts-table");
+        var season_weeks = 5;
+        for (let i = 0; i < season_weeks; i++) {
+            var row1 = table.insertRow(3*i+1);
+            var row2 = table.insertRow(3*i+2);
+            var row3 = table.insertRow(3*i+3);
+            var week_cell = row1.insertCell(0);
+            week_cell.innerHTML = payouts_data.values[3*i+3][1];
+            week_cell.rowSpan = "3";
+            for (let j = 0; j < 3; j++) {
+                var cella = row1.insertCell(1+j);
+                cella.innerHTML = payouts_data.values[3*i+3][2+j];
+                var cellb = row2.insertCell(j);
+                cellb.innerHTML = payouts_data.values[3*i+4][2+j];
+                var cellc = row3.insertCell(j);
+                cellc.innerHTML = payouts_data.values[3*i+5][2+j];
+            }      
+        }
+        var threes_row = table.insertRow(3*season_weeks+1);
+        var ll_row = table.insertRow(3*season_weeks+2);
+        var season_cell = threes_row.insertCell(0);
+        season_cell.innerHTML = payouts_data.values[3*season_weeks+3][1];
+        season_cell.rowSpan = "2";
+        for (let j = 0; j < 3; j++) {
+            var cella = threes_row.insertCell(1+j);
+            cella.innerHTML = payouts_data.values[3*season_weeks+3][2+j];
+            var cellb = ll_row.insertCell(j);
+            cellb.innerHTML = payouts_data.values[3*season_weeks+4][2+j];
+        }      
+    }   
+    
 </script>
 
 <script>
