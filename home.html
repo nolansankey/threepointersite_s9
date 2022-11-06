@@ -59,36 +59,36 @@
     <section id="todays-picks" class="todays-picks-section">
       <h1 id="test_id">Today's Questions</h1>
       <div id="yet-to-pick">
-        <form method="POST" action="https://script.google.com/macros/s/AKfycbzW48rMjihMF26QCeeOt6Qwrsd3CQvYa5HOCz7kKANT8-6a6_g0B9fo71haWg5Ekv1oIQ/exec" id="picks-form">
+        <form method="POST" action="https://script.google.com/macros/s/AKfycbxzUDP7neyJPbeUx1qJF1tm6rOda1qRPnYktMtmhYN-pxcToKGinI1_OALJO_MGj_OP/exec" id="picks-form">
           
           <h3 id="q1_text">Question Error</h3>
-          <h4><a id="q1_link_1" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(link)</a></h4>
+          <h4><a id="q1_link_1" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(ESPN page)</a></h4>
           <br>
           <input type="radio" id="q1_yes" name="Q1" value="yes">
           <label id="q1_yes_label" for="q1_yes">YES</label><br>
           <input type="radio" id="q1_no" name="Q1" value="no">
           <label id="q1_no_label" for="q1_no">NO</label><br>
           <input type="radio" id="q1_opt-out" name="Q1" value="opt out">
-          <label id="q1_oo_label" id="q1_opt-out_txt" for="q1_opt-out">OPT OUT</label><br><br>
+          <label id="q1_opt-out_txt" for="q1_opt-out">OPT OUT</label><br><br>
               
           <h3 id="q2_text">Question Error</h3>
-          <h4><a id="q2_link_1" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(link)</a></h4>
+          <h4><a id="q2_link_1" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(ESPN page)</a></h4>
           <input type="radio" id="q2_yes" name="Q2" value="yes">
           <label id="q2_yes_label" for="q2_yes">YES</label><br>
           <input type="radio" id="q2_no" name="Q2" value="no">
           <label id="q2_no_label" for="q2_no">NO</label><br>
           <input type="radio" id="q2_opt-out" name="Q2" value="opt out">
-          <label id="q2_oo_label" id="q2_opt-out_txt" for="q2_opt-out">OPT OUT</label><br><br>
+          <label id="q2_opt-out_txt" for="q2_opt-out">OPT OUT</label><br><br>
           
           <h3 id="q3_text">Question Error</h3>
-          <h4><a id="q3_link_1" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(link)</a></h4>
+          <h4><a id="q3_link_1" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(ESPN page)</a></h4>
           <br>
           <input type="radio" id="q3_yes" name="Q3" value="yes">
           <label id="q3_yes_label" for="q3_yes">YES</label><br>
           <input type="radio" id="q3_no" name="Q3" value="no">
           <label id="q3_no_label" for="q3_no">NO</label><br>
           <input type="radio" id="q3_opt-out" name="Q3" value="opt out">
-          <label id="q3_oo_label" id="q3_opt-out_txt" for="q3_opt-out">OPT OUT</label><br><br>
+          <label id="q3_opt-out_txt" for="q3_opt-out">OPT OUT</label><br><br>
           
           <input type="submit" id="pick-submit" value="Submit">
         </form>
@@ -114,7 +114,7 @@
         <p id="completed_q3_pick"></p>
         <br>
         <br>
-        <form method="POST" action="https://script.google.com/macros/s/AKfycbzW48rMjihMF26QCeeOt6Qwrsd3CQvYa5HOCz7kKANT8-6a6_g0B9fo71haWg5Ekv1oIQ/exec" id="clear-form">
+        <form method="POST" action="https://script.google.com/macros/s/AKfycbxzUDP7neyJPbeUx1qJF1tm6rOda1qRPnYktMtmhYN-pxcToKGinI1_OALJO_MGj_OP/exec" id="clear-form">
           <input type="submit" id="clear-pick-submit" name="clear" value="Clear My Picks and Resubmit">
         </form>
       </div>
@@ -154,12 +154,6 @@
     document.getElementById("user-note").innerHTML = curr_user;
     document.getElementById("user-intro").innerHTML = "Hi "+curr_user+"!";
     
-    var q1_pick = localStorage.getItem("Q1 "+today);
-    var q2_pick = localStorage.getItem("Q2 "+today);
-    var q3_pick = localStorage.getItem("Q3 "+today);
-    document.getElementById("completed_q1_pick").innerHTML = "Your Pick: "+q1_pick;
-    document.getElementById("completed_q2_pick").innerHTML = "Your Pick: "+q2_pick;
-    document.getElementById("completed_q3_pick").innerHTML = "Your Pick: "+q3_pick;
     if(!is_logged_in){
         window.location.replace("index.html");
     }
@@ -356,7 +350,7 @@
     async function scores_data_fetch(){
         let scores_data = await fetch(scoresSheetLink)    
           .then((response) => response.json());
-        var num_payers = 9
+        var num_payers = 41;
         var table = document.getElementById("scores_table");
         var curr_user = localStorage.getItem("user");
         for (let i = 0; i < num_payers; i++) {
@@ -393,7 +387,7 @@
         
         let this_picks_data = await fetch(thisWeekSheetLink)    
           .then((response) => response.json());
-        var num_players = 9;
+        var num_players = 41;
         var curr_user = localStorage.getItem("user");
         for (let i = 0; i < num_players; i++) {
             var player = this_picks_data.values[3][5+i*3];
@@ -409,7 +403,6 @@
             }    
         }
     }   
-    
 </script>
 
 <script>
