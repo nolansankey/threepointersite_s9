@@ -108,7 +108,7 @@
           .then((response) => response.json());
         var table = document.getElementById("weeks-stats-table");
         var curr_user = localStorage.getItem("user");
-        var num_players = 41;
+        var num_players = 43;
         for (let i = 0; i < num_players; i++) {
             var player = stats_data.values[i+3][2];
             var row_add = i+1

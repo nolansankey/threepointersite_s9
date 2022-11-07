@@ -104,7 +104,7 @@
     async function this_week_data_fetch(){
         let this_picks_data = await fetch(thisWeekSheetLink)    
           .then((response) => response.json());
-        var num_players = 41;
+        var num_players = 43;
         var head_row = document.getElementById("this_week_head_row");
         var table = document.getElementById("this_week_table");
         var curr_user = localStorage.getItem("user");
@@ -251,7 +251,7 @@
     async function last_week_data_fetch(){
         let last_picks_data = await fetch(lastWeekSheetLink)    
           .then((response) => response.json());
-        var num_players = 41;
+        var num_players = 43;
         var head_row = document.getElementById("last_week_head_row");
         var table = document.getElementById("last_week_table");
         for (let i = 0; i < num_players; i++) {

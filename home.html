@@ -350,7 +350,7 @@
     async function scores_data_fetch(){
         let scores_data = await fetch(scoresSheetLink)    
           .then((response) => response.json());
-        var num_payers = 41;
+        var num_payers = 43;
         var table = document.getElementById("scores_table");
         var curr_user = localStorage.getItem("user");
         for (let i = 0; i < num_payers; i++) {
@@ -387,7 +387,7 @@
         
         let this_picks_data = await fetch(thisWeekSheetLink)    
           .then((response) => response.json());
-        var num_players = 41;
+        var num_players = 43;
         var curr_user = localStorage.getItem("user");
         for (let i = 0; i < num_players; i++) {
             var player = this_picks_data.values[3][5+i*3];
