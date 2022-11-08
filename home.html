@@ -95,21 +95,21 @@
       </div>
       <div id="already-picked">
         <h3 id="q1_ap_text">Question Error</h3>
-        <h4><a id="q1_link_2" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(link)</a></h4>
+        <h4><a id="q1_link_2" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(ESPN page)</a></h4>
         <br>
         <p id="completed_q1_pick"></p>
         <br>
         <br>
               
         <h3 id="q2_ap_text">Question Error</h3>
-        <h4><a id="q2_link_2" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(link)</a></h4>
+        <h4><a id="q2_link_2" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(ESPN page)</a></h4>
         <br>
         <p id="completed_q2_pick"></p>
         <br>
         <br>
          
         <h3 id="q3_ap_text">Question Error</h3>
-        <h4><a id="q3_link_2" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(link)</a></h4>
+        <h4><a id="q3_link_2" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(ESPN page)</a></h4>
         <br>
         <p id="completed_q3_pick"></p>
         <br>
@@ -310,33 +310,33 @@
         if(right_now >= q1_time_fetch_num){
             document.getElementById("q1_yes").setAttribute("value","late");
             document.getElementById("q1_yes").setAttribute("checked","chedked");
-            document.getElementById("q1_yes_label").innerHTML = "LATE ("+q1_time_fetch+")";
+            document.getElementById("q1_yes_label").innerHTML = "LATE ("+q1_time_fetch+" Eastern)";
             document.getElementById("q1_no").style.display = 'none';
             document.getElementById("q1_no_label").style.display = 'none';
             document.getElementById("q1_opt-out").style.display = 'none';
-            document.getElementById("q1_oo_label").style.display = 'none';
+            document.getElementById("q1_opt-out_txt").style.display = 'none';
         }
         q2_time_fetch = sheet_data.values[30][2];
         q2_time_fetch_num = Date.parse(q2_time_fetch);
         if(right_now >= q2_time_fetch_num){
             document.getElementById("q2_yes").setAttribute("value","late");
             document.getElementById("q2_yes").setAttribute("checked","chedked");
-            document.getElementById("q2_yes_label").innerHTML = "LATE ("+q2_time_fetch+")";
+            document.getElementById("q2_yes_label").innerHTML = "LATE ("+q2_time_fetch+" Eastern)";
             document.getElementById("q2_no").style.display = 'none';
             document.getElementById("q2_no_label").style.display = 'none';
             document.getElementById("q2_opt-out").style.display = 'none';
-            document.getElementById("q2_oo_label").style.display = 'none';
+            document.getElementById("q2_opt-out_txt").style.display = 'none';
         }
         q3_time_fetch = sheet_data.values[31][2];
         q3_time_fetch_num = Date.parse(q3_time_fetch);
         if(right_now >= q3_time_fetch_num){
             document.getElementById("q3_yes").setAttribute("value","late");
             document.getElementById("q3_yes").setAttribute("checked","chedked");
-            document.getElementById("q3_yes_label").innerHTML = "LATE ("+q3_time_fetch+")";
+            document.getElementById("q3_yes_label").innerHTML = "LATE ("+q3_time_fetch+" Eastern)";
             document.getElementById("q3_no").style.display = 'none';
             document.getElementById("q3_no_label").style.display = 'none';
             document.getElementById("q3_opt-out").style.display = 'none';
-            document.getElementById("q3_oo_label").style.display = 'none';
+            document.getElementById("q3_opt-out_txt").style.display = 'none';
         }
     }
 
