@@ -158,7 +158,11 @@
             var cell4 = row.insertCell(3);
             cell4.innerHTML = stats_data.values[i+3][12];
             var cell5 = row.insertCell(4);
-            cell5.innerHTML = stats_data.values[i+3][14]; 
+            var percent = stats_data.values[i+3][14];
+            if (stats_data.values[i+3][22]=="x"){
+                percent = percent+" *";
+            }   
+            cell5.innerHTML = percent; 
             if (player==curr_user){
                 cell1.classList.add("user-cell");
                 cell2.classList.add("user-cell");
